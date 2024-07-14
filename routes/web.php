@@ -8,7 +8,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
+    // return view('welcome');
 });
 
 Auth::routes();
