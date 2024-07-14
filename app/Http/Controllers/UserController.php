@@ -133,10 +133,21 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(User $user): RedirectResponse
     {
-        User::find($id)->delete();
+        // About if user is Super Admin or User ID belongs to Auth User
+        if ($user->hasRole('Super Admin') || $user->id == auth()->user()->id)
+        {
+            abort(403, 'USER DOES NOT HAVE THE RIGHT PERMISSIONS');
+        }
+
+        $user->syncRoles([]);
+        $user->delete();
         return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+                ->withSuccess('User is deleted successfully.');
+
+        // User::find($id)->delete();
+        // return redirect()->route('users.index')
+        //                 ->with('success','User deleted successfully');
     }
 }

@@ -140,10 +140,20 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id): RedirectResponse
+    public function destroy(Role $role): RedirectResponse
     {
-        DB::table("roles")->where('id',$id)->delete();
+        if($role->name=='Super Admin'){
+            abort(403, 'SUPER ADMIN ROLE CAN NOT BE DELETED');
+        }
+        if(auth()->user()->hasRole($role->name)){
+            abort(403, 'CAN NOT DELETE SELF ASSIGNED ROLE');
+        }
+        $role->delete();
         return redirect()->route('roles.index')
-                        ->with('success','Role deleted successfully');
+            ->with('success','Role deleted successfully');
+
+        // DB::table("roles")->where('id',$id)->delete();
+        // return redirect()->route('roles.index')
+        //                 ->with('success','Role deleted successfully');
     }
 }

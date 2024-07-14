@@ -35,7 +35,7 @@
     <div class="card shadow bg-white">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered">
+                <table class="table  table-striped  table-bordered">
                     <tr>
                         <th>{{ __('№') }}</th>
                         <th>{{ __('Name') }}</th>
