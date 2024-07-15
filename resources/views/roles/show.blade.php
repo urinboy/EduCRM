@@ -32,13 +32,13 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>{{ __("Name") }}:</strong>
                             {{ $role->name }}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Permissions:</strong>
+                            <strong>{{ __("Permissions") }}:</strong>
                             @if(!empty($rolePermissions))
                                 @foreach($rolePermissions as $v)
                                     <label class="border rounded px-2 py-1 my-2 mx-1">{{ $v->name }},</label>

@@ -31,13 +31,13 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Name:</strong>
+                        <strong>{{ __("Name") }}:</strong>
                         {{ $product->name }}
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Details:</strong>
+                        <strong>{{ __("Details") }}:</strong>
                         {{ $product->detail }}
                     </div>
                 </div>

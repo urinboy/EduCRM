@@ -34,19 +34,19 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Name:</strong>
+                            <strong>{{ __("Name") }}:</strong>
                             {{ $user->name }}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Email:</strong>
+                            <strong>{{ __("Email") }}:</strong>
                             {{ $user->email }}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Roles:</strong>
+                            <strong>{{ __("Roles") }}:</strong>
                             @foreach ($roles as $value => $label)
                                 @if (isset($userRole[$value]))
                                     <label class="btn btn-success btn-sm">{{ $label }}</label>

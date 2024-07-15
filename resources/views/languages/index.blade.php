@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Products Management'))
+@section('title', __('Languages Management'))
 
 @section('heading')
     <div class="row mb-3">
@@ -8,10 +8,8 @@
             <h2 class="mb-0">@yield('title')</h2>
         </div>
         <div class="col-lg-6 col-sm-12 d-flex justify-content-end">
-            @can('product-create')
-                <a class="shadow btn btn-success my-2" href="{{ route('products.create') }}"><i class="fa fa-plus"></i>
-                    {{ __('Create New Product') }}</a>
-            @endcan
+            <a class="shadow btn btn-success my-2" href="{{ route('languages.create') }}"><i class="fa fa-plus"></i>
+                {{ __('Create New Language') }}</a>
         </div>
     </div>
     <div class="row">
@@ -28,7 +26,7 @@
 @section('content')
 
     @session('success')
-        <div class="alert alert-success" product="alert" id="success-alert">
+        <div class="alert alert-success" role="alert" id="success-alert">
             {{ $value }}
         </div>
     @endsession
@@ -40,48 +38,39 @@
                     <tr>
                         <th>{{ __('№') }}</th>
                         <th>{{ __('Name') }}</th>
-                        <th>{{ __('Details') }}</th>
+                        <th>{{ __('Code') }}</th>
                         <th width="280px">{{ __('Action') }}</th>
                     </tr>
-                    @if(count($products) > 0)
-                        @foreach ($products as $product)
-                            <tr>
-                                <td>{{ ++$i }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->detail }}</td>
-                                <td>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST">
-                                        <a class="btn btn-info btn-sm m-1 w-30"
-                                            href="{{ route('products.show', $product->id) }}"><i class="fa-solid fa-eye"></i>
-                                            {{ __('Show') }}</a>
-                                        @can('product-edit')
-                                            <a class="btn btn-primary btn-sm m-1 w-30"
-                                                href="{{ route('products.edit', $product->id) }}"><i
-                                                    class="fa-solid fa-pen-to-square"></i> {{ __('Edit') }}</a>
-                                        @endcan
-
-                                        @can('product-delete')
-                                            <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal"
-                                                data-bs-target="#deleteModal" data-roleid="{{ $product->id }}"><i
-                                                    class="fa-solid fa-trash"></i> {{ __('Delete') }}</button>
-                                        @endcan
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                        @else
+                    @foreach ($data as $key => $language)
                         <tr>
-                            <td colspan="4" class="text-center fw-bold">
-                                {{ __("Not Data") }}
+                            <td>{{ ++$key }}</td>
+                            <td>{{ $language->name }}</td>
+                            <td><span class="badge bg-success">{{ $language->code }}</span></td>
+
+                            <td>
+                                @can('language-show')
+                                    <a class="btn btn-info btn-sm m-1 w-30"
+                                        href="{{ route('languages.show', $language->id) }}"><i class="fa-solid fa-eye"></i>
+                                        {{ __('Show') }}</a>
+                                @endcan
+                                @can('language-edit')
+                                    <a class="btn btn-primary btn-sm m-1 w-30"
+                                        href="{{ route('languages.edit', $language->id) }}"><i
+                                            class="fa-solid fa-pen-to-square"></i> {{ __('Edit') }}</a>
+                                @endcan
+
+                                @can('language-delete')
+                                    <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" data-languageid="{{ $language->id }}"><i
+                                            class="fa-solid fa-trash"></i> {{ __('Delete') }}</button>
+                                @endcan
                             </td>
                         </tr>
-                    @endisset
-
+                    @endforeach
                 </table>
-
             </div>
 
-            {!! $products->links('pagination::bootstrap-5') !!}
+            {!! $data->links('pagination::bootstrap-5') !!}
         </div>
     </div>
 
@@ -90,11 +79,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">{{ __('Delete product') }}</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">{{ __('Delete Language') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{ __('Are you sure you want to delete this product?') }}
+                    {{ __('Are you sure you want to delete this language?') }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
@@ -114,8 +103,8 @@
             var deleteModal = document.getElementById('deleteModal');
             deleteModal.addEventListener('show.bs.modal', function(event) {
                 var button = event.relatedTarget;
-                var roleId = button.getAttribute('data-roleid');
-                var action = '{{ url('products') }}/' + roleId;
+                var languageId = button.getAttribute('data-languageid');
+                var action = '{{ url('languages') }}/' + languageId;
                 var form = deleteModal.querySelector('#deleteForm');
                 form.setAttribute('action', action);
             });
@@ -129,4 +118,5 @@
             }
         });
     </script>
+
 @endsection

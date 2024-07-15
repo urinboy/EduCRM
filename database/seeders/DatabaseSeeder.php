@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -17,12 +16,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             CreateAdminUserSeeder::class,
+            LanguageSeeder::class,
         ]);
-
-        // $this->call([
-        //     PermissionTableSeeder::class,
-        //     CreateAdminUserSeeder::class,
-        //     // Yana boshqa seederlarni shu yerda qo'shing
-        // ]);
     }
 }

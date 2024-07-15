@@ -51,49 +51,14 @@ class CreateAdminUserSeeder extends Seeder
         ]);
         $student->assignRole('Student');
 
-        //===========================================================
+        // Creating User
+        $user = User::create([
+            'name' => 'User', 
+            'email' => 'user@urinboydev.uz',
+            'password' => Hash::make('user')
+        ]);
+        $user->assignRole('User');
 
-        // // Admin
-        // $admin = User::create([
-        //     'name' => 'UrinboyDev', 
-        //     'email' => 'admin@urinboydev.uz',
-        //     'password' => bcrypt('12344321')
-        // ]);
-        
-        // $adminRole = Role::create(['name' => 'Admin']);
-        // $permissions = Permission::pluck('id','id')->all();
-        // $adminRole->syncPermissions($permissions);
-        // $admin->assignRole([$adminRole->id]);
-
-        // // Teacher        
-        // $teacher = User::create([
-        //     'name' => 'Teacher', 
-        //     'email' => 'teacher@urinboydev.uz',
-        //     'password' => bcrypt('teacher')
-        // ]);
-
-        // $teacherRole = Role::create(['name' => 'Teacher']);
-        // $teacher->assignRole([$teacherRole->id]);
-
-        // // Student
-        // $student = User::create([
-        //     'name' => 'Student', 
-        //     'email' => 'student@urinboydev.uz',
-        //     'password' => bcrypt('student')
-        // ]);
-
-        // $studentRole = Role::create(['name' => 'Student']);
-        // $student->assignRole([$studentRole->id]);
-
-        // // User
-        // $user = User::create([
-        //     'name' => 'Student', 
-        //     'email' => 'user@urinboydev.uz',
-        //     'password' => bcrypt('user')
-        // ]);
-
-        // $userRole = Role::create(['name' => 'User']);
-        // $user->assignRole([$studentRole->id]);
 
     }
 }

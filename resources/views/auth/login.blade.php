@@ -34,8 +34,8 @@
 @endsection
 
 @section('content')
-    <div class="row d-flex justify-content-center">
-        <div class="col-lg-4 col-md-6 col-sm-12">
+    <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-8 col-sm-12">
             <div class="card shadow bg-white">
                 <div class="card-body">
                     <div class="d-flex justify-content-center mt-4 mb-2">
@@ -43,7 +43,7 @@
                     </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        <div class="row p-2">
+                        <div class="row p-1 m-0">
                             <div class="form-group mt-2">
                                 <label for="email" class="form-label">{{ __('Email Address') }}</label>
                                 <input id="email" type="email"
@@ -57,50 +57,50 @@
                                 @enderror
                             </div>
     
-                        </div>
-    
-                        <div class="form-group mt-2">
-                            <label for="password" class="form-label">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                                name="password" required autocomplete="current-password">
-    
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-    
-                        </div>
-    
-                        <div class="row my-3 px-2">
-                            <div class="col-md-6">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                            <div class="form-group mt-2">
+                                <label for="password" class="form-label">{{ __('Password') }}</label>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                                    name="password" required autocomplete="current-password">
+        
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+        
+                            </div>
+        
+                            <div class="row m-0 align-items-center justify-content-between">
+                                <div class="badge text-warning form-check mt-3 w-50 d-flex align-items-center">
+                                    <input class="form-check-input  m-0 mx-1" type="checkbox" name="remember" id="remember"
                                         {{ old('remember') ? 'checked' : '' }}>
     
-                                    <label class="form-check-label" for="remember">
+                                    <label class="form-check-label text-sm m-0" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
-    
-                            </div>
-                            <div class="col-md-6 d-flex align-items-center justify-content-end">
                                 @if (Route::has('password.request'))
-                                    <a class="badge text-bg-primary" style="text-decoration: none" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                <a class="badge text-primary mt-3 w-50 " style="text-decoration: none" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                {{-- <div class="col-md-8">
+        
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center justify-content-end">
+                                </div> --}}
+                            </div>
+        
+        
+                            <div class="row m-0">
+                                <div class="col-md-12 m-0 mt-2">
+                                    <button type="submit" class="btn btn-primary w-100">
+                                        {{ __('Login') }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
     
-    
-                        <div class="row my-3">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary w-100">
-                                    {{ __('Login') }}
-                                </button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>

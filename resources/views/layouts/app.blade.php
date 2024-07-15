@@ -37,7 +37,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto pt-2">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -52,13 +52,19 @@
                                 </li>
                             @endif
                         @else
+                            @can('user-list')
                             <li><a class="nav-link" href="{{ route('users.index') }}">{{ __("Users") }}</a></li>
+                            @endcan
                             @can('role-list')
                                 <li><a class="nav-link" href="{{ route('roles.index') }}">{{ __("Roles") }}</a></li>
+                            @endcan
+                            @can('language-list')
+                                <li><a class="nav-link" href="{{ route('languages.index') }}">{{ __("Languages") }}</a></li>
                             @endcan
                             @can('product-list')
                                 <li><a class="nav-link" href="{{ route('products.index') }}">{{ __("Products") }}</a></li>
                             @endcan
+                            
                             
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -78,6 +84,23 @@
                                 </div>
                             </li>
                         @endguest
+                        <li class="nav-item dropdown">
+                            <button class="nav-link dropdown-toggle" id="bd-notification" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset('/dist/flags/' . app()->getLocale() . '.png') }}" class="bd-h-lang-icon" alt=""  width="25px">
+                                <span class=" fw-bold">{{ strtoupper(app()->getLocale()) }}</span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-notification">
+                                @foreach (App\Models\Language::all() as $language)
+                                    <form action="{{ route('locale.change') }}" method="POST" class="dropdown-item p-0">
+                                        @csrf
+                                        <button type="submit" name="locale" value="{{ $language->code }}" class="btn btn-link fw-bold w-100 text-start p-2" style="text-decoration: none">
+                                            <img src="{{ asset('/dist/flags/' . $language->code . '.png') }}" alt="" width="25px">
+                                            {{ $language->name }}
+                                        </button>
+                                    </form>
+                                @endforeach
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

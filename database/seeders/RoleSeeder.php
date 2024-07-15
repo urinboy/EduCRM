@@ -20,16 +20,21 @@ class RoleSeeder extends Seeder
 
         $admin = Role::create(['name' => 'Admin']);
         $admin->givePermissionTo([
+
             // users
             'user-list',
             'user-create',
+            'user-show',
             'user-edit',
             'user-delete',
+
             // products
             'product-list',
             'product-create',
+            'product-show',
             'product-edit',
             'product-delete'
+
         ]);
 
         $teacher = Role::create(['name' => 'Teacher']);
@@ -37,6 +42,7 @@ class RoleSeeder extends Seeder
             // products
             'product-list',
             'product-create',
+            'product-show',
             'product-edit',
             'product-delete'
         ]);
@@ -46,6 +52,10 @@ class RoleSeeder extends Seeder
         $student->givePermissionTo([
             // products
             'product-list',
+            'product-show',
         ]);
+
+        $user = Role::create(['name' => 'User']);
+
     }
 }
