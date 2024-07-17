@@ -37,7 +37,7 @@
                 <table class="table  table-striped  table-bordered">
                     <tr>
                         <th>{{ __('№') }}</th>
-                        <th>{{ __('Name') }}</th>
+                        <th>{{ __('Language') }} {{ __('Name') }}</th>
                         <th>{{ __('Code') }}</th>
                         <th width="280px">{{ __('Action') }}</th>
                     </tr>
@@ -49,20 +49,13 @@
 
                             <td>
                                 @can('language-show')
-                                    <a class="btn btn-info btn-sm m-1 w-30"
-                                        href="{{ route('languages.show', $language->id) }}"><i class="fa-solid fa-eye"></i>
-                                        {{ __('Show') }}</a>
+                                    <a class="btn btn-info btn-sm m-1 w-30" href="{{ route('languages.show', $language->id) }}"><i class="fa-solid fa-eye"></i></a>
                                 @endcan
                                 @can('language-edit')
-                                    <a class="btn btn-primary btn-sm m-1 w-30"
-                                        href="{{ route('languages.edit', $language->id) }}"><i
-                                            class="fa-solid fa-pen-to-square"></i> {{ __('Edit') }}</a>
+                                    <a class="btn btn-primary btn-sm m-1 w-30" href="{{ route('languages.edit', $language->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                                 @endcan
-
                                 @can('language-delete')
-                                    <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" data-languageid="{{ $language->id }}"><i
-                                            class="fa-solid fa-trash"></i> {{ __('Delete') }}</button>
+                                    <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal" data-bs-target="#deleteModal" data-languageid="{{ $language->id }}"><i class="fa-solid fa-trash"></i></button>
                                 @endcan
                             </td>
                         </tr>

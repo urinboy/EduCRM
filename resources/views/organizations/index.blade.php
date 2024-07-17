@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('Products Management'))
+@section('title', __('Organizations Management'))
 
 @section('heading')
     <div class="row mb-3">
@@ -8,10 +8,8 @@
             <h2 class="mb-0">@yield('title')</h2>
         </div>
         <div class="col-lg-6 col-sm-12 d-flex justify-content-end">
-            @can('product-create')
-                <a class="shadow btn btn-success my-2" href="{{ route('products.create') }}"><i class="fa fa-plus"></i>
-                    {{ __('Create New Product') }}</a>
-            @endcan
+            <a class="shadow btn btn-success my-2" href="{{ route('organizations.create') }}"><i class="fa fa-plus"></i>
+                {{ __('Create New Organizations') }}</a>
         </div>
     </div>
     <div class="row">
@@ -28,7 +26,7 @@
 @section('content')
 
     @session('success')
-        <div class="alert alert-success" product="alert" id="success-alert">
+        <div class="alert alert-success" role="alert" id="success-alert">
             {{ $value }}
         </div>
     @endsession
@@ -39,42 +37,46 @@
                 <table class="table  table-striped  table-bordered">
                     <tr>
                         <th>{{ __('№') }}</th>
-                        <th>{{ __('Name') }}</th>
-                        <th>{{ __('Details') }}</th>
+                        <th>{{ __('Organization') }} {{ __('Name') }}</th>
+                        <th>{{ __('Address') }}</th>
+                        <th>{{ __('Phone') }}</th>
+                        <th>{{ __('Email') }}</th>
+                        <th>{{ __('Website') }}</th>
                         <th width="280px">{{ __('Action') }}</th>
                     </tr>
-                    @if(count($products) > 0)
-                        @foreach ($products as $product)
+
+                    @if (count($data) > 0)
+                        @foreach ($data as $key => $organization)
                             <tr>
                                 <td>{{ ++$i }}</td>
-                                <td>{{ $product->name }}</td>
-                                <td>{{ $product->detail }}</td>
+                                <td>{{ $organization->name }}</td>
+                                <td>{{ $organization->address }}</td>
+                                <td>{{ $organization->phone }}</td>
+                                <td>{{ $organization->email }}</td>
                                 <td>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST">
-                                        <a class="btn btn-info btn-sm m-1 w-30" href="{{ route('products.show', $product->id) }}"><i class="fa-solid fa-eye"></i></a>
-                                        @can('product-edit')
-                                            <a class="btn btn-primary btn-sm m-1 w-30" href="{{ route('products.edit', $product->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        @endcan
-                                        @can('product-delete')
-                                            <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal" data-bs-target="#deleteModal" data-roleid="{{ $product->id }}"><i class="fa-solid fa-trash"></i></button>
-                                        @endcan
-                                    </form>
+                                    <a class="btn btn-info btn-sm m-1 w-30"
+                                        href="{{ route('organizations.show', $organization->id) }}"><i
+                                            class="fa-solid fa-eye"></i></a>
+                                    <a class="btn btn-primary btn-sm m-1 w-30"
+                                        href="{{ route('organizations.edit', $organization->id) }}"><i
+                                            class="fa-solid fa-pen-to-square"></i></a>
+                                    <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal"
+                                        data-bs-target="#deleteModal" data-organizationid="{{ $organization->id }}"><i
+                                            class="fa-solid fa-trash"></i></button>
                                 </td>
                             </tr>
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="4" class="text-center fw-bold">
-                                {{ __("Not Data") }}
+                            <td colspan="7" class="text-center fw-bold">
+                                {{ __('Not Data') }}
                             </td>
                         </tr>
                     @endif
-
                 </table>
-
             </div>
 
-            {!! $products->links('pagination::bootstrap-5') !!}
+            {!! $data->links('pagination::bootstrap-5') !!}
         </div>
     </div>
 
@@ -83,11 +85,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">{{ __('Delete product') }}</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">{{ __('Delete Organization') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{ __('Are you sure you want to delete this product?') }}
+                    {{ __('Are you sure you want to delete this organization?') }}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Cancel') }}</button>
@@ -107,8 +109,8 @@
             var deleteModal = document.getElementById('deleteModal');
             deleteModal.addEventListener('show.bs.modal', function(event) {
                 var button = event.relatedTarget;
-                var roleId = button.getAttribute('data-roleid');
-                var action = '{{ url('products') }}/' + roleId;
+                var organizationId = button.getAttribute('data-organizationid');
+                var action = '{{ url('organizations') }}/' + organizationId;
                 var form = deleteModal.querySelector('#deleteForm');
                 form.setAttribute('action', action);
             });
@@ -122,4 +124,5 @@
             }
         });
     </script>
+
 @endsection

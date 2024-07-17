@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Language extends Model
+class Organization extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['name', 'code'];
+    protected $fillable = [
+        'name', 'address', 'phone', 'email', 'website',
+    ];
 
     public function accounts(): HasMany
     {
-        return $this->hasMany(Account::class);
+        return $this->hasMany(User::class);
     }
 }

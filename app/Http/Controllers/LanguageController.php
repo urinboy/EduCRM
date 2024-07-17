@@ -9,11 +9,6 @@ use Illuminate\View\View;
 
 class LanguageController extends Controller
 {
-            /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     function __construct()
     {
          $this->middleware('permission:language-list|language-create|language-edit|language-delete', ['only' => ['index','store']]);

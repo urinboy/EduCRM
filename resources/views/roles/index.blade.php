@@ -37,7 +37,7 @@
             <table class="table  table-striped  table-bordered">
                 <tr>
                     <th>{{ __("№") }}</th>
-                    <th>{{ __("Name") }}</th>
+                    <th>{{ __("Role") }} {{ __("Name") }}</th>
                     <th width="280px">{{ __("Action") }}</th>
                 </tr>
                   @foreach ($roles as $key => $role)
@@ -45,13 +45,13 @@
                       <td>{{ ++$i }}</td>
                       <td>{{ $role->name }}</td>
                       <td>
-                        <a class="btn btn-info btn-sm m-1 w-30" href="{{ route('roles.show',$role->id) }}"><i class="fa-solid fa-eye"></i> {{ __("Show") }}</a>
+                        <a class="btn btn-info btn-sm m-1 w-30" href="{{ route('roles.show',$role->id) }}"><i class="fa-solid fa-eye"></i></a>
                         @can('role-edit')
-                            <a class="btn btn-primary btn-sm m-1 w-30" href="{{ route('roles.edit',$role->id) }}"><i class="fa-solid fa-pen-to-square"></i> {{ __("Edit") }}</a>
+                            <a class="btn btn-primary btn-sm m-1 w-30" href="{{ route('roles.edit',$role->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
                         @endcan
                         
                         @can('role-delete')
-                            <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal" data-bs-target="#deleteModal" data-roleid="{{ $role->id }}"><i class="fa-solid fa-trash"></i> {{ __("Delete") }}</button>
+                            <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal" data-bs-target="#deleteModal" data-roleid="{{ $role->id }}"><i class="fa-solid fa-trash"></i></button>
                         @endcan
                     </td>
                   </tr>

@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\OrganizationController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -14,8 +17,11 @@ Route::post('/locale', LocaleController::class)->name('locale.change');
 
 Route::get('/', function () {
     return redirect()->route('home');
-    // return view('welcome');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 Auth::routes();
 
@@ -26,4 +32,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('languages', LanguageController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('cities', CityController::class);
+    Route::get('states', [CityController::class, 'getStates'])->name('states.get');
+    Route::resource('organizations', OrganizationController::class);   
+    Route::get('/profile', [AccountController::class, 'index'])->name('profile');
 });

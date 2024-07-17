@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __("Users Management"))
+@section('title', __("Cities Management"))
 
 @section('heading')
 <div class="row mb-3">
@@ -8,7 +8,7 @@
         <h2 class="mb-0">@yield('title')</h2>
     </div>
     <div class="col-lg-6 col-sm-12 d-flex justify-content-end">
-        <a class="shadow btn btn-success my-2" href="{{ route('users.create') }}"><i class="fa fa-plus"></i> {{ __("Create New User") }}</a>
+        <a class="shadow btn btn-success my-2" href="{{ route('cities.create') }}"><i class="fa fa-plus"></i> {{ __("Create New City") }}</a>
     </div>
 </div>
 <div class="row">
@@ -35,34 +35,30 @@
             <table class="table  table-striped  table-bordered">
                 <tr>
                     <th>{{ __("№") }}</th>
-                    <th>{{ __("User") }} {{ __("Name") }}</th>
-                    <th>{{ __("Email") }}</th>
-                    <th>{{ __("Roles") }}</th>
+                    <th>{{ __("City") }} {{ __("Name") }}</th>
+                    <th>{{ __("State") }}</th>
+                    <th>{{ __("Country") }}</th>
                     <th width="280px">{{ __("Action") }}</th>
                 </tr>
-                @foreach ($data as $key => $user)
-                 <tr>
-                     <td>{{ ++$i }}</td>
-                     <td>{{ $user->name }}</td>
-                     <td>{{ $user->email }}</td>
-                     <td>
-                       @if(!empty($user->getRoleNames()))
-                         @foreach($user->getRoleNames() as $v)
-                            <label class="badge bg-success">{{ $v }}</label>
-                         @endforeach
-                       @endif
-                     </td>
-                     <td>
-                          <a class="btn btn-info btn-sm m-1 w-30" href="{{ route('users.show',$user->id) }}"><i class="fa-solid fa-eye"></i></a>
-                          <a class="btn btn-primary btn-sm m-1 w-30" href="{{ route('users.edit',$user->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
-                           <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal" data-bs-target="#deleteModal" data-userid="{{ $user->id }}"><i class="fa-solid fa-trash"></i></button>
-                     </td>
-                 </tr>
-              @endforeach
+                @foreach ($cities as $key => $city)
+                    <tr>
+                        <td>{{ ++$i }}</td>
+                        <td>{{ $city->name }}</td>
+                        <td>{{ $city->state->name }}</td>
+                        <td>{{ $city->state->country->name }}</td>
+                        <td>
+                            {{-- <a class="btn btn-info btn-sm m-1 w-30" href="{{ route('cities.show',$city->id) }}"><i class="fa-solid fa-eye"></i> {{ __("Show") }}</a> --}}
+                            <a class="btn btn-primary btn-sm m-1 w-30" href="{{ route('cities.edit',$city->id) }}"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal" data-bs-target="#deleteModal" data-cityid="{{ $city->id }}"><i class="fa-solid fa-trash"></i></button>
+                     
+                        </td>
+                    </tr>
+                @endforeach
+
              </table>
          </div>
          
-         {!! $data->links('pagination::bootstrap-5') !!}    
+         {!! $cities->links('pagination::bootstrap-5') !!}    
     </div>
 </div>
 
@@ -71,11 +67,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="deleteModalLabel">{{ __("Delete User") }}</h5>
+        <h5 class="modal-title" id="deleteModalLabel">{{ __("Delete City") }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {{ __("Are you sure you want to delete this user?") }}
+        {{ __("Are you sure you want to delete this city?") }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __("Cancel") }}</button>
@@ -94,8 +90,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var deleteModal = document.getElementById('deleteModal');
     deleteModal.addEventListener('show.bs.modal', function (event) {
         var button = event.relatedTarget;
-        var userId = button.getAttribute('data-userid');
-        var action = '{{ url("users") }}/' + userId;
+        var userId = button.getAttribute('data-cityid');
+        var action = '{{ url("cities") }}/' + userId;
         var form = deleteModal.querySelector('#deleteForm');
         form.setAttribute('action', action);
     });
