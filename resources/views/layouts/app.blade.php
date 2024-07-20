@@ -48,7 +48,7 @@
 
             <!-- Section - Bootstrap Brain Component -->
             <!-- Breadcrumb -->
-            <section class="py-3 py-md-4 py-xl-5 bg-light">
+            <section class="py-2 py-md-3 py-xl-4 bg-light">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -59,7 +59,7 @@
             </section>
 
             <!-- Section - Bootstrap Brain Component -->
-            <section class="pb-3 pb-md-4 pb-xl-5 bg-light">
+            <section class="pb-2 pb-md-3 pb-xl-4 bg-light">
                 <div class="container">
                     @yield('content')
                 </div>

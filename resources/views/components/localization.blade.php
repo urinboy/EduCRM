@@ -5,7 +5,7 @@
             <span class="fw-bold mx-1">{{ strtoupper(app()->getLocale()) }}</span>
         </span>
     </a>
-    <div class="dropdown-menu dropdown-menu-md-end bsb-dropdown-sm bsb-dropdown-animation bsb-fadeIn">
+    <div class="bg-white dropdown-menu dropdown-menu-md-end bsb-dropdown-sm bsb-dropdown-animation bsb-fadeIn">
         <div class="list-group list-group-flush">
             @foreach (App\Models\Language::all() as $language)
             <form action="{{ route('locale.change') }}" method="POST">

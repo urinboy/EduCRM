@@ -18,6 +18,12 @@
         </button>
         <div class="collapse navbar-collapse" id="bsbNavbar">
             <ul class="navbar-nav bsb-dropdown-menu-responsive ms-auto align-items-center">
+                @guest
+
+                {{-- Localization --}}
+                <x-localization />
+                
+                @else
                 {{-- Search --}}
                 <x-search />
 
@@ -25,13 +31,14 @@
                 <x-localization />
 
                 {{-- Chats --}}
-                <x-chats />
+                {{-- <x-chats /> --}}
 
                 {{-- Notification --}}
-                <x-notification />
+                {{-- <x-notification /> --}}
 
                 {{-- Account --}}
                 <x-account />
+                @endguest
 
             </ul>
         </div>
