@@ -3,25 +3,18 @@
 @section('title', __('Account'))
 
 @section('heading')
-    <div class="row mb-3">
-        <div class="col-lg-6 col-sm-12 d-flex align-items-center">
-            {{-- <h2 class="mb-0">@yield('title')</h2> --}}
-        </div>
-        <div class="col-lg-6 col-sm-12 d-flex justify-content-end"></div>
-    </div>
-    <div class="row">
-        <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
-            aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/home">{{ __('Home') }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
-            </ol>
-        </nav>
-    </div>
+    <h1 class="h4">@yield('title')</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb m-0 fs-7">
+            <li class="breadcrumb-item"><a class="link-primary text-decoration-none"
+                    href="{{ route('home') }}">{{ __('Home') }}</a></li>
+            {{-- <li class="breadcrumb-item">Pages</li> --}}
+            <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
+        </ol>
+    </nav>
 @endsection
 
 @section('content')
-<div class="container">
     <div class="row gy-4 gy-lg-0">
         <div class="col-12 col-lg-4 col-xl-3">
             <div class="row gy-4">
@@ -30,31 +23,32 @@
                         <div class="card-header text-bg-primary">Welcome, {{ Auth::user()->name }}</div>
                         <div class="card-body bg-white">
                             <div class="text-center mb-3">
-                                {{-- <img src="@if($data->photo) /storage/{{ $data->photo }} @else https://bootstrapbrain.com/demo/components/profiles/profile-1/assets/img/profile-img-1.jpg @endif" class="img-fluid rounded-circle" alt="Luna John"> --}}
-                                <img src="https://bootstrapbrain.com/demo/components/profiles/profile-1/assets/img/profile-img-1.jpg" class="img-fluid rounded-circle" alt="{{ Auth::user()->name }}">
+                                {{-- <img src="@if ($data->photo) /storage/{{ $data->photo }} @else https://bootstrapbrain.com/demo/components/profiles/profile-1/assets/img/profile-img-1.jpg @endif" class="img-fluid rounded-circle" alt="Luna John"> --}}
+                                <img src="https://bootstrapbrain.com/demo/components/profiles/profile-1/assets/img/profile-img-1.jpg"
+                                    class="img-fluid rounded-circle" alt="{{ Auth::user()->name }}">
                             </div>
                             <h5 class="text-center mb-1">@ {{ Auth::user()->name }}</h5>
                             <p class="text-center text-secondary mb-4">
-                                @if(!empty(Auth::user()->getRoleNames()))
-                                    @foreach(Auth::user()->getRoleNames() as $v)
+                                @if (!empty(Auth::user()->getRoleNames()))
+                                    @foreach (Auth::user()->getRoleNames() as $v)
                                         <label class="badge bg-success">{{ $v }}</label>
                                     @endforeach
                                 @endif
                             </p>
                             {{-- <ul class="list-group list-group-flush mb-4">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0">Followers</h6>
-                                    <span>7,854</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0">Following</h6>
-                                    <span>5,987</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <h6 class="m-0">Friends</h6>
-                                    <span>4,620</span>
-                                </li>
-                            </ul> --}}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <h6 class="m-0">Followers</h6>
+                            <span>7,854</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <h6 class="m-0">Following</h6>
+                            <span>5,987</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <h6 class="m-0">Friends</h6>
+                            <span>4,620</span>
+                        </li>
+                    </ul> --}}
                             <div class="d-grid m-0">
                                 <button class="btn btn-outline-primary" type="button">Follow</button>
                             </div>
@@ -63,24 +57,24 @@
                 </div>
 
                 {{-- <div class="col-12">
-                    <div class="card widget-card border-light shadow-sm">
-                        <div class="card-header text-bg-primary">Social Accounts</div>
-                        <div class="card-body bg-white">
-                            <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
-                                <i class="bi bi-youtube"></i>
-                            </a>
-                            <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
-                                <i class="bi bi-twitter-x"></i>
-                            </a>
-                            <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
-                                <i class="bi bi-facebook"></i>
-                            </a>
-                            <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
-                                <i class="bi bi-linkedin"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div> --}}
+            <div class="card widget-card border-light shadow-sm">
+                <div class="card-header text-bg-primary">Social Accounts</div>
+                <div class="card-body bg-white">
+                    <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                    <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
+                        <i class="bi bi-twitter-x"></i>
+                    </a>
+                    <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#!" class="d-inline-block bg-dark link-light lh-1 p-2 rounded">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div> --}}
 
                 <div class="col-12">
                     <div class="card widget-card border-light shadow-sm">
@@ -113,20 +107,20 @@
                     </div>
                 </div>
                 {{-- <div class="col-12">
-                    <div class="card widget-card border-light shadow-sm">
-                        <div class="card-header text-bg-primary">Skills</div>
-                        <div class="card-body bg-white">
-                            <span class="badge text-bg-primary">HTML</span>
-                            <span class="badge text-bg-primary">SCSS</span>
-                            <span class="badge text-bg-primary">Javascript</span>
-                            <span class="badge text-bg-primary">React</span>
-                            <span class="badge text-bg-primary">Vue</span>
-                            <span class="badge text-bg-primary">Angular</span>
-                            <span class="badge text-bg-primary">UI</span>
-                            <span class="badge text-bg-primary">UX</span>
-                        </div>
-                    </div>
-                </div> --}}
+            <div class="card widget-card border-light shadow-sm">
+                <div class="card-header text-bg-primary">Skills</div>
+                <div class="card-body bg-white">
+                    <span class="badge text-bg-primary">HTML</span>
+                    <span class="badge text-bg-primary">SCSS</span>
+                    <span class="badge text-bg-primary">Javascript</span>
+                    <span class="badge text-bg-primary">React</span>
+                    <span class="badge text-bg-primary">Vue</span>
+                    <span class="badge text-bg-primary">Angular</span>
+                    <span class="badge text-bg-primary">UI</span>
+                    <span class="badge text-bg-primary">UX</span>
+                </div>
+            </div>
+        </div> --}}
 
             </div>
         </div>
@@ -144,11 +138,11 @@
                                 data-bs-target="#profile-tab-pane" type="button" role="tab"
                                 aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="email-tab" data-bs-toggle="tab"
-                                data-bs-target="#email-tab-pane" type="button" role="tab"
-                                aria-controls="email-tab-pane" aria-selected="false">Emails</button>
-                        </li>
+                        {{-- <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="email-tab" data-bs-toggle="tab"
+                        data-bs-target="#email-tab-pane" type="button" role="tab"
+                        aria-controls="email-tab-pane" aria-selected="false">Emails</button>
+                </li> --}}
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="password-tab" data-bs-toggle="tab"
                                 data-bs-target="#password-tab-pane" type="button" role="tab"
@@ -165,46 +159,44 @@
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Full Name</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->first_name ?? __('Null') }} {{  $data->larst_name ?? __('Null') }} {{  $data->middle_name ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->first_name ?? __('Null') }}
+                                        {{ $data->larst_name ?? __('Null') }} {{ $data->middle_name ?? __('Null') }}
+                                    </div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Birth Day</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->birthday ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->birthday ?? __('Null') }}</div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Gender</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->gender ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->gender ?? __('Null') }}</div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Address</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->country->name ?? __('Null') }}, {{  $data->state->name ?? __('Null') }}, {{  $data->city->name ?? __('Null') }}, {{  $data->address ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->country->name ?? __('Null') }},
+                                        {{ $data->state->name ?? __('Null') }}, {{ $data->city->name ?? __('Null') }},
+                                        {{ $data->address ?? __('Null') }}</div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Organization</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->organization->name ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->organization->name ?? __('Null') }}</div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Role</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
                                     <div class="p-2">
-                                        @if(!empty(Auth::user()->getRoleNames()))
-                                            @foreach(Auth::user()->getRoleNames() as $v)
+                                        @if (!empty(Auth::user()->getRoleNames()))
+                                            @foreach (Auth::user()->getRoleNames() as $v)
                                                 <label class="badge bg-success">{{ $v }}</label>
                                             @endforeach
                                         @endif
@@ -213,42 +205,38 @@
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Phone</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->organization->name ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->organization->name ?? __('Null') }}</div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Email</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
                                     <div class="p-2">{{ Auth::user()->email }}</div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Language</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->language->name ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->language->name ?? __('Null') }}</div>
                                 </div>
                                 <div class="col-5 col-md-3 bg-light border-bottom border-white border-3">
                                     <div class="p-2">Currency</div>
                                 </div>
-                                <div
-                                    class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
-                                    <div class="p-2">{{  $data->currency ?? __('Null') }}</div>
+                                <div class="col-7 col-md-9 bg-light border-start border-bottom border-white border-3">
+                                    <div class="p-2">{{ $data->currency ?? __('Null') }}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel"
-                            aria-labelledby="profile-tab" tabindex="0">
+                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+                            tabindex="0">
                             <form action="#!" class="row gy-3 gy-xxl-4">
                                 <div class="col-12">
                                     <div class="row gy-2">
                                         <label class="col-12 form-label m-0">Profile Image</label>
                                         <div class="col-12">
-                                            <img src="https://bootstrapbrain.com/demo/components/profiles/profile-1/assets/img/profile-img-1.jpg" class="img-fluid"
-                                                alt="Luna John">
+                                            <img src="https://bootstrapbrain.com/demo/components/profiles/profile-1/assets/img/profile-img-1.jpg"
+                                                class="img-fluid" alt="Luna John">
                                         </div>
                                         <div class="col-12">
                                             <a href="#!"
@@ -264,13 +252,11 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputFirstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="inputFirstName"
-                                        value="Ethan">
+                                    <input type="text" class="form-control" id="inputFirstName" value="Ethan">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputLastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="inputLastName"
-                                        value="Leo">
+                                    <input type="text" class="form-control" id="inputLastName" value="Leo">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputEducation" class="form-label">Education</label>
@@ -284,23 +270,19 @@
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputJob" class="form-label">Job</label>
-                                    <input type="text" class="form-control" id="inputJob"
-                                        value="Project Manager">
+                                    <input type="text" class="form-control" id="inputJob" value="Project Manager">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputCompany" class="form-label">Company</label>
-                                    <input type="text" class="form-control" id="inputCompany"
-                                        value="GitHub Inc">
+                                    <input type="text" class="form-control" id="inputCompany" value="GitHub Inc">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputPhone" class="form-label">Phone</label>
-                                    <input type="tel" class="form-control" id="inputPhone"
-                                        value="+12486798745">
+                                    <input type="tel" class="form-control" id="inputPhone" value="+12486798745">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputEmail" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail"
-                                        value="leo@example.com">
+                                    <input type="email" class="form-control" id="inputEmail" value="leo@example.com">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="inputAddress" class="form-label">Address</label>
@@ -602,49 +584,9 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="email-tab-pane" role="tabpanel"
-                            aria-labelledby="email-tab" tabindex="0">
-                            <form action="#!">
-                                <fieldset class="row gy-3 gy-md-0">
-                                    <legend class="col-form-label col-12 col-md-3 col-xl-2">Email Alerts</legend>
-                                    <div class="col-12 col-md-9 col-xl-10">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="emailChange">
-                                            <label class="form-check-label" for="emailChange">
-                                                Email Changed
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="passwordChange">
-                                            <label class="form-check-label" for="passwordChange">
-                                                Password Changed
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                id="weeklyNewsletter">
-                                            <label class="form-check-label" for="weeklyNewsletter">
-                                                Weekly Newsletter
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                id="productPromotions">
-                                            <label class="form-check-label" for="productPromotions">
-                                                Product Promotions
-                                            </label>
-                                        </div>
-                                    </div>
-                                </fieldset>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mt-4">Save Changes</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="password-tab-pane" role="tabpanel"
-                            aria-labelledby="password-tab" tabindex="0">
+                        
+                        <div class="tab-pane fade" id="password-tab-pane" role="tabpanel" aria-labelledby="password-tab"
+                            tabindex="0">
                             <form action="#!">
                                 <div class="row gy-3 gy-xxl-4">
                                     <div class="col-12">
@@ -670,5 +612,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection

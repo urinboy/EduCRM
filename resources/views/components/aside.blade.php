@@ -77,130 +77,130 @@
                         <span class="nav-link-text fw-bold">{{ __('Dashboards') }}</span>
                     </a>
                 </li>
+                @if(Auth::user() && Auth::user()->roles()->where('name', '!=', 'User')->exists())
+                    <li class="nav-item">
+                        <a class="nav-link p-3" data-bs-toggle="collapse" href="#authExamples" role="button"
+                            aria-expanded="false" aria-controls="authExamples">
+                            <div class="nav-link-icon text-success">
+                                <i class="bi bi-gear"></i>
+                            </div>
+                            <span class="nav-link-text fw-bold">{{ __('Managments') }}</span>
+                        </a>
+                        <div class="collapse" id="authExamples">
+                            <ul class="nav flex-column ms-4">
+                                @can('user-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('users.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Users') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('role-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('roles.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Roles') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('language-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('languages.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Languages') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('product-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('products.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Products') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('city-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('cities.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Cities') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('organization-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('organizations.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Organizations') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
 
-                <li class="nav-item">
-                    <a class="nav-link p-3" data-bs-toggle="collapse" href="#authExamples" role="button"
-                        aria-expanded="false" aria-controls="authExamples">
-                        <div class="nav-link-icon text-success">
-                            <i class="bi bi-gear"></i>
+                                {{-- <li class="nav-item">
+                                    <a class="nav-link link-secondary" aria-current="page" href="#!">
+                                        <div class="nav-link-icon text-success-emphasis">
+                                            <i class="bi bi-arrow-right-short"></i>
+                                        </div>
+                                        <span class="nav-link-text">Sign In</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-secondary" aria-current="page" href="#!">
+                                        <div class="nav-link-icon text-success-emphasis">
+                                            <i class="bi bi-arrow-right-short"></i>
+                                        </div>
+                                        <span class="nav-link-text">Sign Up</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-secondary" aria-current="page" href="#!">
+                                        <div class="nav-link-icon text-success-emphasis">
+                                            <i class="bi bi-arrow-right-short"></i>
+                                        </div>
+                                        <span class="nav-link-text">Reset Password</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-secondary" aria-current="page" href="#!">
+                                        <div class="nav-link-icon text-success-emphasis">
+                                            <i class="bi bi-arrow-right-short"></i>
+                                        </div>
+                                        <span class="nav-link-text">Lock</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-secondary" aria-current="page" href="#!">
+                                        <div class="nav-link-icon text-success-emphasis">
+                                            <i class="bi bi-arrow-right-short"></i>
+                                        </div>
+                                        <span class="nav-link-text">Error</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link link-secondary" aria-current="page" href="#!">
+                                        <div class="nav-link-icon text-success-emphasis">
+                                            <i class="bi bi-arrow-right-short"></i>
+                                        </div>
+                                        <span class="nav-link-text">2FA</span>
+                                    </a>
+                                </li> --}}
+                            </ul>
                         </div>
-                        <span class="nav-link-text fw-bold">{{ __('Managments') }}</span>
-                    </a>
-                    <div class="collapse" id="authExamples">
-                        <ul class="nav flex-column ms-4">
-                            @can('user-list')
-                                <li class="nav-item">
-                                    <a class="nav-link  link-secondary" href="{{ route('users.index') }}">
-                                        <div class="nav-link-icon text-success-emphasis">
-                                            <i class="bi bi-arrow-right-short"></i>
-                                        </div>
-                                        <span class="nav-link-text">{{ __('Users') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('role-list')
-                                <li class="nav-item">
-                                    <a class="nav-link  link-secondary" href="{{ route('roles.index') }}">
-                                        <div class="nav-link-icon text-success-emphasis">
-                                            <i class="bi bi-arrow-right-short"></i>
-                                        </div>
-                                        <span class="nav-link-text">{{ __('Roles') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('language-list')
-                                <li class="nav-item">
-                                    <a class="nav-link  link-secondary" href="{{ route('languages.index') }}">
-                                        <div class="nav-link-icon text-success-emphasis">
-                                            <i class="bi bi-arrow-right-short"></i>
-                                        </div>
-                                        <span class="nav-link-text">{{ __('Languages') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('product-list')
-                                <li class="nav-item">
-                                    <a class="nav-link  link-secondary" href="{{ route('products.index') }}">
-                                        <div class="nav-link-icon text-success-emphasis">
-                                            <i class="bi bi-arrow-right-short"></i>
-                                        </div>
-                                        <span class="nav-link-text">{{ __('Products') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('city-list')
-                                <li class="nav-item">
-                                    <a class="nav-link  link-secondary" href="{{ route('cities.index') }}">
-                                        <div class="nav-link-icon text-success-emphasis">
-                                            <i class="bi bi-arrow-right-short"></i>
-                                        </div>
-                                        <span class="nav-link-text">{{ __('Cities') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('organization-list')
-                                <li class="nav-item">
-                                    <a class="nav-link  link-secondary" href="{{ route('organizations.index') }}">
-                                        <div class="nav-link-icon text-success-emphasis">
-                                            <i class="bi bi-arrow-right-short"></i>
-                                        </div>
-                                        <span class="nav-link-text">{{ __('Organizations') }}</span>
-                                    </a>
-                                </li>
-                            @endcan
-
-                            {{-- <li class="nav-item">
-                                <a class="nav-link link-secondary" aria-current="page" href="#!">
-                                    <div class="nav-link-icon text-success-emphasis">
-                                        <i class="bi bi-arrow-right-short"></i>
-                                    </div>
-                                    <span class="nav-link-text">Sign In</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-secondary" aria-current="page" href="#!">
-                                    <div class="nav-link-icon text-success-emphasis">
-                                        <i class="bi bi-arrow-right-short"></i>
-                                    </div>
-                                    <span class="nav-link-text">Sign Up</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-secondary" aria-current="page" href="#!">
-                                    <div class="nav-link-icon text-success-emphasis">
-                                        <i class="bi bi-arrow-right-short"></i>
-                                    </div>
-                                    <span class="nav-link-text">Reset Password</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-secondary" aria-current="page" href="#!">
-                                    <div class="nav-link-icon text-success-emphasis">
-                                        <i class="bi bi-arrow-right-short"></i>
-                                    </div>
-                                    <span class="nav-link-text">Lock</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-secondary" aria-current="page" href="#!">
-                                    <div class="nav-link-icon text-success-emphasis">
-                                        <i class="bi bi-arrow-right-short"></i>
-                                    </div>
-                                    <span class="nav-link-text">Error</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link-secondary" aria-current="page" href="#!">
-                                    <div class="nav-link-icon text-success-emphasis">
-                                        <i class="bi bi-arrow-right-short"></i>
-                                    </div>
-                                    <span class="nav-link-text">2FA</span>
-                                </a>
-                            </li> --}}
-                        </ul>
-                    </div>
-                </li>
-
+                    </li>
+                @endif
 
                 {{-- <li class="nav-item">
                     <a class="nav-link p-3" data-bs-toggle="collapse" href="#pageExamples" role="button"
@@ -449,6 +449,5 @@
             @endguest
 
         </ul>
-        {{-- <hr class="sidebar-divider my-4"> --}}
     </div>
 </aside>

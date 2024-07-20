@@ -114,6 +114,103 @@
                 </div>
             </div>
         </nav>
+        
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div class="container">
+        <a class="nav-link" href="#!" data-bs-toggle="offcanvas" data-bs-target="#bsbSidebar1"
+            aria-controls="bsbSidebar1">
+            <i class="bi bi-grid fs-3 lh-1"></i>
+        </a>
+        <a class="navbar-brand" href="/" style="margin-left: 10px">
+            {{ config('app.name', 'Laravel') }}
+        </a>
+
+        <div class="dropdown">
+            <style>
+                .dropdown-toggle:after {
+                    display: none;
+                    content: "",
+                }
+            </style>
+            <button class="btn btn-white dropdown-toggle d-flex align-items-center" id="languageDropdown"
+                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{{ asset('/dist/flags/' . app()->getLocale() . '.png') }}" class="bd-h-lang-icon mx-1"
+                    alt="" width="25px">
+                <span class="fw-bold mr-1">{{ strtoupper(app()->getLocale()) }}</span>
+            </button>
+            <ul class="dropdown-menu bg-white dropdown-menu-end" aria-labelledby="languageDropdown">
+                @foreach (App\Models\Language::all() as $language)
+                    <li>
+                        <form action="{{ route('locale.change') }}" method="POST" class="p-0 m-0">
+                            @csrf
+                            <button type="submit" name="locale" value="{{ $language->code }}"
+                                class="dropdown-item d-flex align-items-center @if (app()->getLocale() === $language->code) bg-primary text-white @endif">
+                                <img src="{{ asset('/dist/flags/' . $language->code . '.png') }}" alt=""
+                                    width="25px" class="me-2">
+                                {{ $language->name }}
+                            </button>
+                        </form>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+
+
+        {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav me-auto"></ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ms-auto pt-2"></ul>
+        </div> --}}
+    </div>
+</nav>
+
+
+{{-- <nav class="navbar navbar-expand-sm bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand d-sm-none" href="/">
+            {{ config('app.name') }}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#bsbNavbar"
+            aria-controls="bsbNavbar" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="bsbNavbar" aria-labelledby="bsbNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="bsbNavbarLabel">{{ __("Menu") }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav">
+                    <li class="nav-item me-3">
+                        <a class="nav-link" href="#!" data-bs-toggle="offcanvas"
+                            data-bs-target="#bsbSidebar1" aria-controls="bsbSidebar1">
+                            <i class="bi-filter-left fs-3 lh-1"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#!">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#!">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav> --}}
+
 
         <main class="py-4">
             <div class="container">
