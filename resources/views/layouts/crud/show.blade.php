@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('can', __('language'))
-@section('name', __('languages'))
-@section('title', __('section.view', ['show' => $language->name]))
+@section('can', __('user'))
+@section('name', __('users'))
+@section('title', __('section.view', ['show' => $user->name]))
 
 @section('heading')
     <h1 class="h3">{{ __('section.info', ['show' => lcfirst($__env->yieldContent('can'))]) }}</h1>
@@ -27,20 +27,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>{{ __('Name') }}:</strong>
-                            {{ $language->name }}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>{{ __('Code') }}:</strong>
-                            <span class="text-success fw-bold mx-2">{{ $language->code }}</span>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
-use App\Models\Country;
 use App\Models\State;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -22,15 +21,15 @@ class CityController extends Controller
 
     public function index(Request $request): View
     {
-        $cities = City::latest()->with('state.country')->paginate(20);  
-        return view('cities.index',compact('cities'))
-            ->with('i', ($request->input('page', 1) - 1) * 10);
+        $data = City::latest()->with('state.country')->paginate(20);  
+        return view('cities.index',compact('data'))
+            ->with('i', ($request->input('page', 1) - 1) * 20);
     }
 
     public function create()
     {
-        $countries = Country::all();
-        return view('cities.create', compact('countries'));
+        $states = State::all();
+        return view('cities.create', compact('states'));
     }
 
     public function store(Request $request)
@@ -41,13 +40,18 @@ class CityController extends Controller
         ]);
 
         City::create($request->all());
-        return redirect()->route('cities.index')->with('success', __("City created successfully."));
+        return redirect()->route('cities.index')->with('success', __("message.create_success", ['name' => ucfirst(__("city"))]));
+    }
+
+    public function show(City $city)
+    {
+        return view('cities.show', compact('city'));
     }
 
     public function edit(City $city)
     {
-        $countries = Country::all();
-        return view('cities.edit', compact('city', 'countries'));
+        $states = State::all();
+        return view('cities.edit', compact('city', 'states'));
     }
 
     public function update(Request $request, City $city)
@@ -58,13 +62,13 @@ class CityController extends Controller
         ]);
 
         $city->update($request->all());
-        return redirect()->route('cities.index')->with('success', __("City updated successfully."));
+        return redirect()->route('cities.index')->with('success', __("message.update_success", ['name' => ucfirst(__("city"))]));
     }
 
     public function destroy(City $city)
     {
         $city->delete();
-        return redirect()->route('cities.index')->with('success', __("City deleted successfully."));
+        return redirect()->route('cities.index')->with('success', __("message.delete_success", ['name' => ucfirst(__("city"))]));
     }
 
     public function getStates(Request $request)

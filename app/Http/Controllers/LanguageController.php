@@ -34,7 +34,7 @@ class LanguageController extends Controller
     public function store(LanguageRequest $request)
     {
         Language::create($request->validated());
-        return redirect()->route('languages.index')->with('success', __("Language created successfully."));
+        return redirect()->route('languages.index')->with('success', __("message.create_success", ['name' => ucfirst(__("language"))]));
     }
 
     public function show(Language $language)
@@ -50,13 +50,13 @@ class LanguageController extends Controller
     public function update(LanguageRequest $request, Language $language)
     {
         $language->update($request->validated());
-        return redirect()->route('languages.index')->with('success', __("Language updated successfully."));
+        return redirect()->route('languages.index')->with('success', __("message.update_success", ['name' => ucfirst(__("language"))]));
     }
 
     public function destroy(Language $language)
     {
         $language->delete();
-        return redirect()->route('languages.index')->with('success', __("Language deleted successfully."));
+        return redirect()->route('languages.index')->with('success', __("message.delete_success", ['name' => ucfirst(__("language"))]));
     }
     
 }

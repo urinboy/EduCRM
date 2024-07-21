@@ -24,8 +24,8 @@ class RoleController extends Controller
     
     public function index(Request $request): View
     {
-        $roles = Role::orderBy('id','DESC')->paginate(5);
-        return view('roles.index',compact('roles'))
+        $data = Role::orderBy('id','DESC')->paginate(10);
+        return view('roles.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     
@@ -51,7 +51,7 @@ class RoleController extends Controller
         $role->syncPermissions($permissionsID);
     
         return redirect()->route('roles.index')
-                        ->with('success', __("Role created successfully"));
+                        ->with('success', __("message.create_success", ['name' => ucfirst(__("role"))]));
     }
  
     public function show($id): View
@@ -94,7 +94,7 @@ class RoleController extends Controller
         $role->syncPermissions($permissionsID);
     
         return redirect()->route('roles.index')
-                        ->with('success', __("Role updated successfully"));
+                        ->with('success',  __("message.update_success", ['name' => ucfirst(__("role"))]));
     }
     
     public function destroy(Role $role): RedirectResponse
@@ -107,7 +107,7 @@ class RoleController extends Controller
         }
         $role->delete();
         return redirect()->route('roles.index')
-            ->with('success', __("Role deleted successfully"));
+            ->with('success',  __("message.delete_success", ['name' => ucfirst(__("role"))]));
 
     }
 }

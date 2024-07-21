@@ -1,114 +1,19 @@
 {
-    "English":"English",
+    "users":"users",
+    "user":"user",
+
+    "roles":"roles",
+    "role":"role",
     
-    "Dashboard":"Dashboard",
-
-    "Manage Roles":"Manage Roles",
-    "Role Management":"Role Management",
-    "Roles":"Roles",
-    "Role":"Role",
-    "Create New Role":"Create New Role",
-    "Role created successfully":"Role created successfully",
-    "Edit Role":"Edit Role",
-    "Role updated successfully":"Role updated successfully",
-    "Delete Role":"Delete Role",
-    "Are you sure you want to delete this role?":"Are you sure you want to delete this role?",
-    "Role deleted successfully":"Role deleted successfully",
+    "languages":"languages",
+    "language":"language",
     
-    "Manage Users":"Manage Users",
-    "Users Management":"Users Management",
-    "Users":"Users",
-    "User":"User",
-    "Create New User":"Create New User",
-    "User created successfully":"User created successfully",
-    "Edit User":"Edit User",
-    "User updated successfully":"User updated successfully",
-    "Delete User":"Delete User",
-    "Are you sure you want to delete this user?":"Are you sure you want to delete this user?",
-    "User is deleted successfully.":"User is deleted successfully.",
-
-    "Manage Products":"Manage Products",
-    "Products Management":"Products Management",
-    "Products":"Products",
-    "Product":"Product",
-    "Create New Product":"Create New Product",
-    "Product created successfully.":"Product created successfully.",
-    "Edit Product":"Edit Product",
-    "Product updated successfully.":"Product updated successfully.",
-    "Delete Product":"Delete Product",
-    "Are you sure you want to delete this product?":"Are you sure you want to delete this product?",
-    "Product deleted successfully.":"Product deleted successfully.",
+    "products":"products",
+    "product":"product",
     
-    "Languages Management":"Languages Management",
-    "Languages":"Languages",
-    "Language":"Language",
-    "Create New Language":"Create New Language",
-    "Language created successfully.":"Language created successfully.",
-    "Edit Language":"Edit Language",
-    "Language updated successfully.":"Language updated successfully.",
-    "Delete Language":"Delete Language",
-    "Are you sure you want to delete this language?":"Are you sure you want to delete this language?",
-    "Language deleted successfully.":"Language deleted successfully.",
-
-    "Cities Management":"Cities Management",
-    "Cities":"Cities",
-    "City":"City",
-    "Country":"Country",
-    "State":"State",
-    "Create New City":"Create New City",
-    "City created successfully.":"City created successfully.",
-    "City updated successfully.":"City updated successfully.",
-    "Delete City":"Delete City",
-    "City deleted successfully.":"City deleted successfully.",
-
-    "You are logged in!":"You are logged in!",
+    "cities":"cities",
+    "city":"city",
     
-    "ERRORS":"ERRORS",
-    "SUPER ADMIN ROLE CAN NOT BE DELETED":"SUPER ADMIN ROLE CAN NOT BE DELETED",
-    "USER DOES NOT HAVE THE RIGHT PERMISSIONS":"USER DOES NOT HAVE THE RIGHT PERMISSIONS",
-    "CAN NOT DELETE SELF ASSIGNED ROLE":"CAN NOT DELETE SELF ASSIGNED ROLE",
-
-    "Home":"Home",
-    "Back":"Back",
-
-    "CRUD":"CRUD",
-    "№":"№",
-    "Name":"Name",
-    "Email":"Email",
-    "Code":"Code",
-    "Detail":"Detail",
-    "Permission":"Permission",
-
-    "Whoops! There were some problems with your input.":"Whoops! There were some problems with your input.",
-    "Not Data":"Not Data",
-    
-    "Action":"Action",
-    "Create":"Create",
-    "Show":"Show",
-    "Edit":"Edit",
-    "Delete":"Delete",
-    "Cancel":"Cancel",
-    "Submit":"Submit",
-
-    "Authentification":"Authentification",
-    "Login":"Login",
-    "Register":"Register",
-    "Logout":"Logout",
-
-    "Full Name":"Full Name",
-    "Enter Full Name":"Enter Full Name",
-
-    "Email Address":"Email Address",
-    "Enter Email Address":"Enter Email Address",
-
-    "Password":"Password",
-    "Enter Password":"Enter Password",
-
-    "Confirm Password":"Confirm Password",
-    "Enter Confirm Password":"Enter Confirm Password",
-
-    "Remember Me":"Remember Me",
-    "Forgot Your Password?":"Forgot Your Password?",
-
-    "":""
+    "organizations":"organizations",
+    "organization":"organization"
 }

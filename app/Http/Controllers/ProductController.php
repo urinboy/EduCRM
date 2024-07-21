@@ -20,9 +20,9 @@ class ProductController extends Controller
   
     public function index(): View
     {
-        $products = Product::latest()->paginate(5);
+        $data = Product::latest()->paginate(10);
 
-        return view('products.index',compact('products'))
+        return view('products.index',compact('data'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -41,7 +41,7 @@ class ProductController extends Controller
         Product::create($request->all());
     
         return redirect()->route('products.index')
-                        ->with('success', __("Product created successfully."));
+                        ->with('success', __("message.create_success", ['name' => ucfirst(__("product"))]));
     }
     
     public function show(Product $product): View
@@ -64,7 +64,7 @@ class ProductController extends Controller
         $product->update($request->all());
     
         return redirect()->route('products.index')
-                        ->with('success', __("Product updated successfully."));
+                        ->with('success', __("message.update_success", ['name' => ucfirst(__("product"))]));
     }
     
     public function destroy(Product $product): RedirectResponse
@@ -72,6 +72,6 @@ class ProductController extends Controller
         $product->delete();
 
         return redirect()->route('products.index')
-            ->with('success', __("Product deleted successfully."));
+            ->with('success', __("message.delete_success", ['name' => ucfirst(__("product"))]));
     }
 }

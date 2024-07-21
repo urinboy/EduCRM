@@ -25,7 +25,8 @@ class OrganizationController extends Controller
     public function store(OrganizationRequest $request)
     {
         Organization::create($request->validated());
-        return redirect()->route('organizations.index');
+        return redirect()->route('organizations.index')
+            ->with('success', __("message.create_success", ['name' => ucfirst(__("organization"))]));
     }
 
     public function show(Organization $organization)
@@ -41,12 +42,14 @@ class OrganizationController extends Controller
     public function update(OrganizationRequest $request, Organization $organization)
     {
         $organization->update($request->validated());
-        return redirect()->route('organizations.index');
+        return redirect()->route('organizations.index')
+            ->with('success', __("message.update_success", ['name' => ucfirst(__("organization"))]));
     }
 
     public function destroy(Organization $organization)
     {
         $organization->delete();
-        return redirect()->route('organizations.index');
+        return redirect()->route('organizations.index')
+            ->with('success', __("message.delete_success", ['name' => ucfirst(__("organization"))]));
     }
 }

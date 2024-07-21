@@ -25,7 +25,7 @@
                 
                 @else
                 {{-- Search --}}
-                <x-search />
+                {{-- <x-search /> --}}
 
                 {{-- Localization --}}
                 <x-localization />

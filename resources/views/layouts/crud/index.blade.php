@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('can', __('city'))
-@section('name', __('cities'))
+@section('can', __('user'))
+@section('name', __('users'))
 @section('title', __('section.title_manage', ['name' => ucfirst($__env->yieldContent('name'))]))
 
 @section('heading')
@@ -28,46 +28,61 @@
         <div class="card-header bg-white mb-3">
             <div class="px-3 my-2 d-flex justify-content-between">
                 <h3>{{ __('section.list_of', ['lists' => $__env->yieldContent('name')]) }}</h3>
-                <a class="py-2 px-4 fw-bold shadow btn btn-success" href="{{ route($__env->yieldContent('name') . '.create') }}"><i class="fa fa-plus"></i> {{ __('crud.btn_create') }}</a>
+                <a class="py-2 px-4 fw-bold shadow btn btn-success"
+                    href="{{ route($__env->yieldContent('name') . '.create') }}"><i class="fa fa-plus"></i>
+                    {{ __('crud.btn_create') }}</a>
             </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table  table-striped  table-bordered">
                     <tr>
-                        <th>{{ __("№") }}</th>
-                    <th>{{ __("City") }} {{ __("Name") }}</th>
-                    <th>{{ __("State") }}</th>
-                    <th>{{ __("Country") }}</th>
-                    <th width="280px">{{ __("Action") }}</th>
+                        <th>{{ __('№') }}</th>
+                        <th>{{ __('User') }} {{ __('Name') }}</th>
+                        <th>{{ __('Email') }}</th>
+                        <th>{{ __('Roles') }}</th>
+                        <th width="280px">{{ __('Action') }}</th>
                     </tr>
+                    @if (count($data) > 0)
+                        @foreach ($data as $key => $value)
+                            <tr>
+                                <td>{{ ++$i }}</td>
+                                <td>{{ $value->name }}</td>
+                                <td>{{ $value->email }}</td>
+                                <td>
+                                    @if (!empty($value->getRoleNames()))
+                                        @foreach ($value->getRoleNames() as $v)
+                                            <label class="badge bg-success">{{ $v }}</label>
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td>
+                                    @can($__env->yieldContent('can') . '-show')
+                                        <a class="btn btn-info btn-sm m-1 w-30"
+                                            href="{{ route($__env->yieldContent('name') . '.show', $value->id) }}"><i
+                                                class="fa-solid fa-eye"></i></a>
+                                    @endcan
+                                    @can($__env->yieldContent('can') . '-edit')
+                                        <a class="btn btn-primary btn-sm m-1 w-30"
+                                            href="{{ route($__env->yieldContent('name') . '.edit', $value->id) }}"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
+                                    @endcan
+                                    @can($__env->yieldContent('can') . '-delete')
+                                        <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal"
+                                            data-bs-target="#deleteModal" data-sectionid="{{ $value->id }}"><i
+                                                class="fa-solid fa-trash"></i></button>
+                                    @endcan
 
-                    @foreach ($data as $key => $value)
+                                </td>
+                            </tr>
+                        @endforeach
+                    @else
                         <tr>
-                            <td>{{ ++$i }}</td>
-                            <td>{{ $value->name }}</td>
-                            <td>{{ $value->state->name }}</td>
-                            <td>{{ $value->state->country->name }}</td>
-                            <td>
-                                @can($__env->yieldContent('can') . '-show')
-                                    <a class="btn btn-info btn-sm m-1 w-30"
-                                        href="{{ route($__env->yieldContent('name') . '.show', $value->id) }}"><i
-                                            class="fa-solid fa-eye"></i></a>
-                                @endcan
-                                @can($__env->yieldContent('can') . '-edit')
-                                    <a class="btn btn-primary btn-sm m-1 w-30"
-                                        href="{{ route($__env->yieldContent('name') . '.edit', $value->id) }}"><i
-                                            class="fa-solid fa-pen-to-square"></i></a>
-                                @endcan
-                                @can($__env->yieldContent('can') . '-delete')
-                                    <button type="button" class="btn btn-danger btn-sm m-1 w-30" data-bs-toggle="modal"
-                                        data-bs-target="#deleteModal" data-sectionid="{{ $value->id }}"><i
-                                            class="fa-solid fa-trash"></i></button>
-                                @endcan
-
+                            <td colspan="5" class="text-center fw-bold">
+                                {{ __('message.data_not_available') }}
                             </td>
                         </tr>
-                    @endforeach
+                    @endif
                 </table>
             </div>
 

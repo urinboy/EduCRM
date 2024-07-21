@@ -46,6 +46,13 @@ class PermissionSeeder extends Seeder
             'city-edit',
             'city-delete',
 
+            // organizations
+            'organization-list',
+            'organization-create',
+            'organization-show',
+            'organization-edit',
+            'organization-delete',
+
         ];
          
         foreach ($permissions as $permission) {

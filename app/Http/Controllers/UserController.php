@@ -54,7 +54,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('users.index')
-                        ->with('success', __("User created successfully"));
+                        ->with('success',  __("message.create_success", ['name' => ucfirst(__("user"))]));
     }
     
     public function show($id): View
@@ -98,7 +98,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('users.index')
-                        ->with('success', __("User updated successfully"));
+                        ->with('success',  __("message.update_success", ['name' => ucfirst(__("user"))]));
     }
     
     public function destroy(User $user): RedirectResponse
@@ -112,6 +112,6 @@ class UserController extends Controller
         $user->syncRoles([]);
         $user->delete();
         return redirect()->route('users.index')
-                ->withSuccess(__("User is deleted successfully."));
+                ->withSuccess( __("message.delete_success", ['name' => ucfirst(__("user"))]));
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('can', __('user'))
-@section('name', __('users'))
+@section('can', __('organization'))
+@section('name', __('organizations'))
 @section('title', __('section.title_edit', ['name' => lcfirst($__env->yieldContent('can'))]))
 
 @section('heading')
@@ -37,15 +37,14 @@
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route($__env->yieldContent('name') . '.update', $user->id) }}">
+            <form method="POST" action="{{ route($__env->yieldContent('name') . '.update', $organization->id) }}">
                 @csrf
                 @method('PUT')
-            
                 <div class="row p-2">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group mt-2">
-                            <label for="name" class="form-label">{{ __("Name") }}:</label>
-                            <input type="text" id="name" name="name" placeholder="Name" class="form-control w-100 @error('name') is-invalid @enderror" value="{{ $user->name }}">
+                            <label class="form-label" for="name">{{ __("Organization Name") }}:</label>
+                            <input type="text" id="name" name="name" placeholder="Organization Name" class="form-control w-100 @error('name') is-invalid @enderror" required value="{{ old('name', $organization->name) }}">
                             @error('name')
                                 <span class="invalid-feedback d-block" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -55,8 +54,30 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group mt-2">
-                            <label for="email" class="form-label">{{ __("Email") }}:</label>
-                            <input type="email" id="email" name="email" placeholder="Email" class="form-control w-100 @error('email') is-invalid @enderror" value="{{ $user->email }}">
+                            <label class="form-label" for="address">{{ __("Address") }}:</label>
+                            <input type="text" id="address" name="address" placeholder="Address" class="form-control w-100 @error('address') is-invalid @enderror" value="{{ old('address', $organization->address) }}">
+                            @error('address')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group mt-2">
+                            <label class="form-label" for="phone">{{ __("Phone") }}:</label>
+                            <input type="text" id="phone" name="phone" placeholder="Phone" class="form-control w-100 @error('phone') is-invalid @enderror" value="{{ old('phone', $organization->phone) }}">
+                            @error('phone')
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group mt-2">
+                            <label class="form-label" for="email">{{ __("Email") }}:</label>
+                            <input type="email" id="email" name="email" placeholder="Email" class="form-control w-100 @error('email') is-invalid @enderror" value="{{ old('email', $organization->email) }}">
                             @error('email')
                                 <span class="invalid-feedback d-block" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -66,37 +87,9 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group mt-2">
-                            <label for="password" class="form-label">{{ __("Password") }}:</label>
-                            <input type="password" id="password" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror">
-                            @error('password')
-                                <span class="invalid-feedback d-block" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group mt-2">
-                            <label for="confirm-password" class="form-label">{{ __("Confirm Password") }}:</label>
-                            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" class="form-control @error('confirm-password') is-invalid @enderror">
-                            @error('confirm-password')
-                                <span class="invalid-feedback d-block" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group mt-2">
-                            <label for="roles" class="form-label">{{ __("Role") }}:</label>
-                            <select id="roles" name="roles[]" class="form-control @error('roles') is-invalid @enderror"  multiple="multiple">
-                                @foreach ($roles as $value => $label)
-                                    <option value="{{ $value }}" {{ isset($userRole[$value]) ? 'selected' : ''}}>
-                                        {{ $label }}
-                                    </option>
-                                 @endforeach
-                            </select>
-                            @error('roles')
+                            <label class="form-label" for="website">{{ __("Website") }}:</label>
+                            <input type="url" id="website" name="website" placeholder="Website" class="form-control w-100 @error('website') is-invalid @enderror" value="{{ old('website', $organization->website) }}">
+                            @error('website')
                                 <span class="invalid-feedback d-block" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -104,7 +97,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 mt-2 d-flex justify-content-end">
-                        <button type="submit" class="shadow btn btn-success btn-sm mt-2 mb-3 px-5 py-2"><i class="fa-solid fa-floppy-disk"></i> {{ __("crud.btn_submit") }}</button>
+                        <button type="submit" class="shadow btn btn-success btn-sm mt-2 mb-3 px-5 py-2"><i class="fa-solid fa-floppy-disk"></i> {{ __("crud.btn_update") }}</button>
                     </div>
                 </div>
             </form>

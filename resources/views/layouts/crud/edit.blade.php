@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('can', __('role'))
-@section('name', __('roles'))
+@section('can', __('user'))
+@section('name', __('users'))
 @section('title', __('section.title_edit', ['name' => lcfirst($__env->yieldContent('can'))]))
 
 @section('heading')
@@ -37,31 +37,10 @@
             </div>
         </div>
         <div class="card-body">
-            <form method="POST" action="{{ route($__env->yieldContent('name') . '.update', $role->id) }}">
+            <form method="POST" action="{{ route($__env->yieldContent('name') . '.update', $user->id) }}">
                 @csrf
                 @method('PUT')
-                
-                <div class="row p-2">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group mt-2">
-                            <strong>{{ __("Name") }}:</strong>
-                            <input type="text" name="name" placeholder="Name" class="form-control" value="{{ $role->name }}">
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group mt-2">
-                            <strong>{{ __("Permission") }}:</strong>
-                            <br/>
-                            @foreach($permission as $value)
-                                <label class="border rounded px-2 py-1 my-2 mx-1"><input type="checkbox" name="permission[{{$value->id}}]" value="{{$value->id}}" class="name" {{ in_array($value->id, $rolePermissions) ? 'checked' : ''}}>
-                                {{ $value->name }}</label>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12  mt-2 d-flex justify-content-end">
-                        <button type="submit" class="shadow btn btn-success btn-sm mt-2 mb-3 px-5 py-2"><i class="fa-solid fa-floppy-disk"></i> {{ __("crud.btn_update") }}</button>
-                    </div>
-                </div>
+            
             </form>
             
         </div>

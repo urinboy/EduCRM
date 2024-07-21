@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('can', __('product'))
-@section('name', __('products'))
-@section('title', __('section.view', ['show' => $product->name]))
+@section('can', __('user'))
+@section('name', __('users'))
+@section('title', __('section.title_create', ['name' => lcfirst($__env->yieldContent('can'))]))
 
 @section('heading')
-    <h1 class="h3">{{ __('section.info', ['show' => lcfirst($__env->yieldContent('can'))]) }}</h1>
+    <h1 class="h3">@yield('title')</h1>
     <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);"
         aria-label="breadcrumb">
         <ol class="breadcrumb m-0 fs-7">
@@ -17,32 +17,26 @@
 @endsection
 
 @section('content')
-
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            {{ __('message.oops') }}
+        </div>
+    @endif
     <div class="d-flex justify-content-center">
         <div class="card shadow bg-white w-100">
             <div class="card-header bg-white">
                 <div class="px-3 my-2 d-flex justify-content-between">
-                    <h3>@yield('title')</h3>
-                    <a class="py-2 px-4 fw-bold shadow btn btn-primary" href="{{ route($__env->yieldContent('name').'.index') }}"><i class="fa fa-arrow-left"></i> {{ __('crud.btn_back') }}</a>
+                    <h3>{{ __('section.create_form', ['form' => ucfirst($__env->yieldContent('can'))]) }}</h3>
+                    <a class="py-2 px-4 fw-bold shadow btn btn-primary" href="{{ route($__env->yieldContent('name') . '.index') }}"><i class="fa fa-arrow-left"></i> {{ __('crud.btn_back') }}</a>
                 </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>{{ __("Name") }}:</strong>
-                            {{ $product->name }}
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>{{ __("Details") }}:</strong>
-                            {{ $product->detail }}
-                        </div>
-                    </div>
-                </div>
+                <form method="POST" action="{{ route($__env->yieldContent('name') . '.store') }}">
+                    @csrf
+                    
+                </form>
+
             </div>
         </div>
     </div>
-
 @endsection
