@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -14,20 +15,18 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 
 
-Route::post('/locale', LocaleController::class)->name('locale.change');
 
-Route::get('/', function () {
-    return redirect()->route('home');
+Route::prefix('/')->group(function () {
+    Route::post('/locale', LocaleController::class)->name('locale.change');
+    Route::get('/', [PageController::class, 'index']);
+    Route::get('/privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacyPolicy');
+    Route::get('/terms-of-service', [PageController::class, 'termsOfServices'])->name('termsOfServices');
+    
+    Route::prefix('/contact')->group(function () {
+        Route::get('/', [ContactController::class, 'create'])->name('contacts.create');
+        Route::post('/', [ContactController::class,'store'])->name('contacts.store');
+    });
 });
-
-Route::prefix('/contact')->group(function () {
-    Route::get('/', [ContactController::class, 'create'])->name('contacts.create');
-    Route::post('/', [ContactController::class,'store'])->name('contacts.store');
-});
-
-// Route::get('/contact', function () {
-//     return view('contact');
-// })->name('contact');
 
 Auth::routes();
 

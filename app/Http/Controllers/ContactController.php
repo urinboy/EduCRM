@@ -21,7 +21,7 @@ class ContactController extends Controller
     public function store(ContactRequest $request)
     {
         Contact::create($request->validated());
-        return redirect()->route('contacts.create')->with('success', 'Contact created successfully.');
+        return redirect()->route('contacts.create')->with('success', __("message.submit_success", ['name' => ucfirst(__("your message"))]));
     }
 
     public function show(Contact $contact)

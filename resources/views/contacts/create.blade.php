@@ -82,7 +82,7 @@
                                 </span>
                                 <input type="tel" id="phone_number" name="phone_number" placeholder="{{ __('Phone Number') }}"
                                     class="form-control @error('phone_number') is-invalid @enderror"
-                                    value="{{ old('phone_number') }}">
+                                    value="{{ old('phone_number') }}" required>
                                 @error('phone_number')
                                     <span class="invalid-feedback d-block" role="alert">
                                         <strong>{{ $message }}</strong>

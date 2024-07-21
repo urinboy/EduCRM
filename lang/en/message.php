@@ -4,6 +4,7 @@ return [
 
     'oops' => 'Whoops! There were some problems with your input.',
     
+    'submit_success' => ':name has been sent successfully!',
     'create_success' => ':name has been successfully created.',
     'update_success' => ':name has been successfully updated.',
     'delete_success' => ':name has been successfully deleted.',

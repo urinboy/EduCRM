@@ -16,25 +16,11 @@
 @endsection
 
 @section('content')
+
     <div class="row">
-        <div class="col-lg-12 col-sm-12 flex-column flex-md-row  flex-lg-row d-flex justify-content-end mb-2">
-            @canany(['role-create', 'role-edit', 'role-delete'])
-                <a class="h3 w-100 btn mx-1 my-2 py-4 px-3 btn-primary" href="{{ route('roles.index') }}">
-                    <i class="bi bi-person-fill-gear"></i> {{ __('Manage Roles') }}
-                </a>
-            @endcanany
-            @canany(['user-create', 'user-edit', 'user-delete'])
-                <a class="h3 w-100 btn mx-1 my-2 py-4 px-3 btn-success" href="{{ route('users.index') }}">
-                    <i class="bi bi-people"></i> {{ __('Manage Users') }}
-                </a>
-            @endcanany
-            @canany(['product-create', 'product-edit', 'product-delete'])
-                <a class="h3 w-100 btn mx-1 my-2 py-4 px-3 btn-warning" href="{{ route('products.index') }}">
-                    <i class="bi bi-bag"></i> {{ __('Manage Products') }}
-                </a>
-            @endcanany
-        </div>
-        <div class="col-12 col-sm-6 col-xl-3">
+        
+
+        {{-- <div class="col-12 col-sm-6 col-xl-3">
             <div class="card widget-card border-light shadow bg-white">
                 <div class="card-body p-4">
                     <div class="row">
@@ -169,10 +155,156 @@
                     </div>
                 </div>
             </div>
+        </div> --}}
+
+        {{-- <style>
+            .row-card-no-pd {
+                border-radius: 10px;
+                margin-left: 0;
+                margin-right: 0;
+                background: #fff;
+                margin-bottom: 30px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                position: relative;
+                -webkit-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+                -moz-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+                box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
+                border: 0
+            }
+
+            .row-card-no-pd .card {
+                margin-bottom: 0;
+                border-width: 0;
+                box-shadow: none;
+                position: relative
+            }
+
+            .row-card-no-pd .card .card-header {
+                padding-left: 0 !important;
+                padding-top: 0 !important;
+                padding-right: 0 !important
+            }
+
+            .row-card-no-pd [class*=col] .card:before {
+                position: absolute;
+                height: calc(100%);
+                width: 1px;
+                background: #eee;
+                content: '';
+                right: -15px
+            }
+        </style> --}}
+
+        <div class="row row-card-no-pd  mx-auto">
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 my-1 mx-auto">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6><b>Todays Income</b></h6>
+                                <p class="text-muted">All Customs Value</p>
+                            </div>
+                            <h4 class="text-info fw-bold">$170</h4>
+                        </div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-info w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <p class="text-muted mb-0">Change</p>
+                            <p class="text-muted mb-0">75%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 my-1 mx-auto">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6><b>Total Revenue</b></h6>
+                                <p class="text-muted">All Customs Value</p>
+                            </div>
+                            <h4 class="text-success fw-bold">$120</h4>
+                        </div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-success w-25" role="progressbar" aria-valuenow="25"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <p class="text-muted mb-0">Change</p>
+                            <p class="text-muted mb-0">25%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 my-1 mx-auto">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6><b>New Orders</b></h6>
+                                <p class="text-muted">Fresh Order Amount</p>
+                            </div>
+                            <h4 class="text-danger fw-bold">15</h4>
+                        </div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+                                aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <p class="text-muted mb-0">Change</p>
+                            <p class="text-muted mb-0">50%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-6 col-xl-3 my-1 mx-auto">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <h6><b>New Users</b></h6>
+                                <p class="text-muted">Joined New User</p>
+                            </div>
+                            <h4 class="text-secondary fw-bold">12</h4>
+                        </div>
+                        <div class="progress progress-sm">
+                            <div class="progress-bar bg-secondary w-25" role="progressbar" aria-valuenow="25"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <p class="text-muted mb-0">Change</p>
+                            <p class="text-muted mb-0">25%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="col-lg-12 col-sm-12 flex-column flex-md-row  flex-lg-row d-flex justify-content-end mb-2">
+            @canany(['role-create', 'role-edit', 'role-delete'])
+                <a class="h3 w-100 btn mx-1 my-2 py-4 px-3 btn-primary" href="{{ route('roles.index') }}">
+                    <i class="bi bi-person-fill-gear"></i> {{ __('Manage Roles') }}
+                </a>
+            @endcanany
+            @canany(['user-create', 'user-edit', 'user-delete'])
+                <a class="h3 w-100 btn mx-1 my-2 py-4 px-3 btn-success" href="{{ route('users.index') }}">
+                    <i class="bi bi-people"></i> {{ __('Manage Users') }}
+                </a>
+            @endcanany
+            @canany(['product-create', 'product-edit', 'product-delete'])
+                <a class="h3 w-100 btn mx-1 my-2 py-4 px-3 btn-warning" href="{{ route('products.index') }}">
+                    <i class="bi bi-bag"></i> {{ __('Manage Products') }}
+                </a>
+            @endcanany
+        </div>
+
     </div>
 
-    <div class="d-flex justify-content-center mt-3">
+
+    {{-- <div class="d-flex justify-content-center mt-3">
         <div class="card shadow bg-white w-100">
 
             <div class="card-body">
@@ -184,5 +316,5 @@
                 {{ __('You are logged in!') }}
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
