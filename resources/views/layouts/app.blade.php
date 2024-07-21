@@ -76,7 +76,7 @@
                     Policy</a>
                 <a href="/terms-of-service" style="margin-right: 15px; text-decoration: none; color: #333;">Terms of
                     Service</a>
-                <a href="{{ route('contact') }}"
+                <a href="{{ route('contacts.create') }}"
                     style="text-decoration: none; color: #333;">{{ __('Contact Us') }}</a>
             </p>
         </footer>

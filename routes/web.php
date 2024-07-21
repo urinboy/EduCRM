@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\OrganizationController;
@@ -19,9 +20,14 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
+Route::prefix('/contact')->group(function () {
+    Route::get('/', [ContactController::class, 'create'])->name('contacts.create');
+    Route::post('/', [ContactController::class,'store'])->name('contacts.store');
+});
+
+// Route::get('/contact', function () {
+//     return view('contact');
+// })->name('contact');
 
 Auth::routes();
 
