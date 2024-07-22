@@ -114,14 +114,23 @@
                         </div>
                         <div class="col-12">
                             <input type="hidden" name="ip_address" id="ip_address" value="{{ $data['ip_address'] }}">
+                            @error('ip_address') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="device" id="device" value="{{ $data['device'] }}">
+                            @error('device') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="platform" id="platform" value="{{ $data['platform'] }}">
+                            @error('platform') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="browser" id="browser" value="{{ $data['browser'] }}">
+                            @error('browser') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="location" id="location" value="{{ $data['location'] }}">
+                            @error('location') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="latitude" id="latitude" value="{{ $data['latitude'] }}">
+                            @error('latitude') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="longitude" id="longitude" value="{{ $data['longitude'] }}">
+                            @error('longitude') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="mac_address" id="mac_address" value="{{ $data['mac_address'] }}">
+                            @error('mac_address') <small style="display: none;">{{ $message }}</small>  @enderror
                             <input type="hidden" name="status" id="status" value="{{ old('status', 'pending') }}">
+                            @error('status') <small style="display: none;">{{ $message }}</small>  @enderror
                         </div>
                         <div class="col-12">
                             <div class="d-grid">
