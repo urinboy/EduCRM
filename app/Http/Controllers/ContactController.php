@@ -31,9 +31,9 @@ class ContactController extends Controller
 
     public function create(Request $request): View
     {
-          // IP manzilini olish
-    //    $ipAddress = $request->ip();
-       $ipAddress = "95.46.96.14";
+       // IP manzilini olish
+       //    $ipAddress = "95.46.96.14";
+       $ipAddress = $request->ip();
      
        // Qurilma ma'lumotlarini olish
        $agent = new Agent();
