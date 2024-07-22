@@ -33,6 +33,10 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::prefix('/contact')->group(function () {
+        Route::get('/index', [ContactController::class, 'index'])->name('contacts.index');
+        Route::get('/view/{contact}', [ContactController::class, 'show'])->name('contacts.show');
+    });
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
     Route::resource('languages', LanguageController::class);

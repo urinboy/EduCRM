@@ -34,7 +34,7 @@
                 {{-- <x-chats /> --}}
 
                 {{-- Notification --}}
-                {{-- <x-notification /> --}}
+                <x-notification />
 
                 {{-- Account --}}
                 <x-account />

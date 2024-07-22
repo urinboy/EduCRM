@@ -107,10 +107,21 @@
                             <textarea id="message" name="message" placeholder="Message"
                             class="form-control w-100 @error('message') is-invalid @enderror" required>{{ old('message') }}</textarea>
                             @error('message')
-                                <span class="invalid-feedback d-block" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
                             @enderror
+                        </div>
+                        <div class="col-12">
+                            <input type="hidden" name="ip_address" id="ip_address" value="{{ $data['ip_address'] }}">
+                            <input type="hidden" name="device" id="device" value="{{ $data['device'] }}">
+                            <input type="hidden" name="platform" id="platform" value="{{ $data['platform'] }}">
+                            <input type="hidden" name="browser" id="browser" value="{{ $data['browser'] }}">
+                            <input type="hidden" name="location" id="location" value="{{ $data['location'] }}">
+                            <input type="hidden" name="latitude" id="latitude" value="{{ $data['latitude'] }}">
+                            <input type="hidden" name="longitude" id="longitude" value="{{ $data['longitude'] }}">
+                            <input type="hidden" name="mac_address" id="mac_address" value="{{ $data['mac_address'] }}">
+                            <input type="hidden" name="status" id="status" value="{{ old('status', 'pending') }}">
                         </div>
                         <div class="col-12">
                             <div class="d-grid">

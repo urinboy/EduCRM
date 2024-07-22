@@ -52,6 +52,6 @@
         <li>
             <hr class="dropdown-divider">
         </li>
-        <li><a class="dropdown-item fs-7 text-center" href="#">See All Notifications</a></li>
+        <li><a class="dropdown-item fs-7 text-center" href="{{ route('contacts.index') }}">See All Notifications</a></li>
     </ul>
 </li>

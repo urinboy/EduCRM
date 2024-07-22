@@ -9,7 +9,6 @@
         <ol class="breadcrumb m-0 fs-7">
             <li class="breadcrumb-item"><a class="link-primary text-decoration-none"
                     href="{{ route('home') }}">{{ __('Home') }}</a></li>
-            {{-- <li class="breadcrumb-item">Pages</li> --}}
             <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
         </ol>
     </nav>
@@ -18,9 +17,8 @@
 @section('content')
 
     <div class="row">
-        
 
-        {{-- <div class="col-12 col-sm-6 col-xl-3">
+        <div class="col-12 col-sm-6 col-xl-3 my-2">
             <div class="card widget-card border-light shadow bg-white">
                 <div class="card-body p-4">
                     <div class="row">
@@ -54,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-xl-3">
+        <div class="col-12 col-sm-6 col-xl-3 my-2">
             <div class="card widget-card border-light shadow bg-white">
                 <div class="card-body p-4">
                     <div class="row">
@@ -88,7 +86,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-xl-3">
+        <div class="col-12 col-sm-6 col-xl-3 my-2">
             <div class="card widget-card border-light shadow bg-white">
                 <div class="card-body p-4">
                     <div class="row">
@@ -122,7 +120,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-xl-3">
+        <div class="col-12 col-sm-6 col-xl-3 my-2">
             <div class="card widget-card border-light shadow bg-white">
                 <div class="card-body p-4">
                     <div class="row">
@@ -155,48 +153,10 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
-        {{-- <style>
-            .row-card-no-pd {
-                border-radius: 10px;
-                margin-left: 0;
-                margin-right: 0;
-                background: #fff;
-                margin-bottom: 30px;
-                padding-top: 15px;
-                padding-bottom: 15px;
-                position: relative;
-                -webkit-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
-                -moz-box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
-                box-shadow: 2px 6px 15px 0 rgba(69, 65, 78, .1);
-                border: 0
-            }
 
-            .row-card-no-pd .card {
-                margin-bottom: 0;
-                border-width: 0;
-                box-shadow: none;
-                position: relative
-            }
-
-            .row-card-no-pd .card .card-header {
-                padding-left: 0 !important;
-                padding-top: 0 !important;
-                padding-right: 0 !important
-            }
-
-            .row-card-no-pd [class*=col] .card:before {
-                position: absolute;
-                height: calc(100%);
-                width: 1px;
-                background: #eee;
-                content: '';
-                right: -15px
-            }
-        </style> --}}
-
-        <div class="row row-card-no-pd  mx-auto">
+        <div class="row row-card-no-pd my-3 mx-auto">
             <div class="col-12 col-sm-6 col-md-6 col-xl-3 my-1 mx-auto">
                 <div class="card bg-white">
                     <div class="card-body">
@@ -250,8 +210,8 @@
                             <h4 class="text-danger fw-bold">15</h4>
                         </div>
                         <div class="progress progress-sm">
-                            <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="50" aria-valuemin="0"
-                                aria-valuemax="100"></div>
+                            <div class="progress-bar bg-danger w-50" role="progressbar" aria-valuenow="50"
+                                aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                         <div class="d-flex justify-content-between mt-2">
                             <p class="text-muted mb-0">Change</p>
@@ -302,6 +262,693 @@
         </div>
 
     </div>
+
+    {{-- <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5">
+                        <i class="fa fa-certificate fa-4x text-primary mb-4"></i>
+                        <h5 class="mb-3">Years Experience</h5>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">1234</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5">
+                        <i class="fa fa-users-cog fa-4x text-primary mb-4"></i>
+                        <h5 class="mb-3">Team Members</h5>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">1234</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s"
+                    style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5">
+                        <i class="fa fa-users fa-4x text-primary mb-4"></i>
+                        <h5 class="mb-3">Satisfied Clients</h5>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">1234</h1>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s"
+                    style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                    <div class="fact-item bg-light rounded text-center h-100 p-5">
+                        <i class="fa fa-check fa-4x text-primary mb-4"></i>
+                        <h5 class="mb-3">Projects Done</h5>
+                        <h1 class="display-5 mb-0" data-toggle="counter-up">1234</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">Explore By Category</h1>
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
+                        <h6 class="mb-3">Marketing</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-headset text-primary mb-4"></i>
+                        <h6 class="mb-3">Customer Service</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s"
+                    style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-user-tie text-primary mb-4"></i>
+                        <h6 class="mb-3">Human Resource</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s"
+                    style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-tasks text-primary mb-4"></i>
+                        <h6 class="mb-3">Project Management</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-chart-line text-primary mb-4"></i>
+                        <h6 class="mb-3">Business Development</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-hands-helping text-primary mb-4"></i>
+                        <h6 class="mb-3">Sales &amp; Communication</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s"
+                    style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-book-reader text-primary mb-4"></i>
+                        <h6 class="mb-3">Teaching &amp; Education</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s"
+                    style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                    <a class="cat-item rounded p-4 bg-white" href="">
+                        <i class="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
+                        <h6 class="mb-3">Design &amp; Creative</h6>
+                        <p class="mb-0">123 Vacancy</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s"
+                style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <h1 class="mb-5">Popular Courses</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <div class="course-item bg-white rounded shadow">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid rounded" src="https://themewagon.github.io/elearning/img/course-1.jpg" alt="">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
+                                    style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3"
+                                    style="border-radius: 0 30px 30px 0;">Join Now</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">$149.00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small>(123)</small>
+                            </div>
+                            <h5 class="mb-4">Web Design &amp; Development Course for Beginners</h5>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30
+                                Students</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                    <div class="course-item bg-white rounded shadow">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid rounded" src="https://themewagon.github.io/elearning/img/course-2.jpg" alt="">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
+                                    style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3"
+                                    style="border-radius: 0 30px 30px 0;">Join Now</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">$149.00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small>(123)</small>
+                            </div>
+                            <h5 class="mb-4">Web Design &amp; Development Course for Beginners</h5>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30
+                                Students</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s"
+                    style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                    <div class="course-item bg-white rounded shadow">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid rounded" src="https://themewagon.github.io/elearning/img/course-3.jpg" alt="">
+                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end"
+                                    style="border-radius: 30px 0 0 30px;">Read More</a>
+                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3"
+                                    style="border-radius: 0 30px 30px 0;">Join Now</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                            <h3 class="mb-0">$149.00</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small>(123)</small>
+                            </div>
+                            <h5 class="mb-4">Web Design &amp; Development Course for Beginners</h5>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
+                            <small class="flex-fill text-center border-end py-2"><i
+                                    class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30
+                                Students</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-xxl py-5">
+        <div class="container">
+            <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s"
+                style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">Job Listing</h1>
+            <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.3s"
+                style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                    <li class="nav-item">
+                        <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3" data-bs-toggle="pill"
+                            href="#tab-1">
+                            <h6 class="mt-n1 mb-0">Featured</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="d-flex align-items-center text-start mx-3 pb-3 active" data-bs-toggle="pill"
+                            href="#tab-2">
+                            <h6 class="mt-n1 mb-0">Full Time</h6>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
+                            href="#tab-3">
+                            <h6 class="mt-n1 mb-0">Part Time</h6>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane fade p-0">
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Software Engineer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Marketing Manager</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Product Designer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Creative Director</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Wordpress Developer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
+                    </div>
+                    <div id="tab-2" class="tab-pane fade p-0 active show">
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Software Engineer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Marketing Manager</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Product Designer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Creative Director</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Wordpress Developer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
+                    </div>
+                    <div id="tab-3" class="tab-pane fade p-0">
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Software Engineer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Marketing Manager</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Product Designer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Creative Director</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="job-item p-4 mb-4 bg-white rounded">
+                            <div class="row g-4">
+                                <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                                    <img class="flex-shrink-0 img-fluid border rounded"
+                                        src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
+                                        alt="" style="width: 80px; height: 80px;">
+                                    <div class="text-start ps-4">
+                                        <h5 class="mb-3">Wordpress Developer</h5>
+                                        <span class="text-truncate me-3"><i
+                                                class="fa fa-map-marker-alt text-primary me-2"></i>New York, USA</span>
+                                        <span class="text-truncate me-3"><i
+                                                class="far fa-clock text-primary me-2"></i>Full Time</span>
+                                        <span class="text-truncate me-0"><i
+                                                class="far fa-money-bill-alt text-primary me-2"></i>$123 - $456</span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                                    <div class="d-flex mb-3">
+                                        <a class="btn btn-light btn-square me-3" href=""><i
+                                                class="far fa-heart text-primary"></i></a>
+                                        <a class="btn btn-primary" href="">Apply Now</a>
+                                    </div>
+                                    <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Date
+                                        Line: 01 Jan, 2045</small>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary py-3 px-5" href="">Browse More Jobs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
     {{-- <div class="d-flex justify-content-center mt-3">

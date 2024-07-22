@@ -15,9 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('full_name');
             $table->string('email');
-            $table->string('phone_number')->nullable();
+            $table->string('phone_number');
             $table->string('subject');
             $table->text('message');
+            $table->string('ip_address');
+            $table->string('device');
+            $table->string('platform');
+            $table->string('browser');
+            $table->string('location');
+            $table->decimal('latitude', 10, 7);
+            $table->decimal('longitude', 10, 7);
+            $table->string('mac_address');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

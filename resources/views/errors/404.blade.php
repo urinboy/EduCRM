@@ -28,8 +28,9 @@
                         website! Maybe go to our home page or try to use a search?
                     </p>
                     <a class="btn btn-primary py-3 px-5" href="{{ route('home') }}">Go Back To Home</a>
+                    <a class="btn btn-secondary py-3 px-5" href="javascript:history.back()">Back</a>
                 </div>
             </div>
         </div>
-    </div>F
+    </div>
 @endsection
