@@ -19,6 +19,15 @@ class ContactRequest extends FormRequest
             'phone_number' => 'required|string|max:20',
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
+            'ip_address' => 'required|string|max:45',
+            'device' => 'required|string|max:255',
+            'platform' => 'required|string|max:255',
+            'browser' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'latitude' => 'required|string|max:255',
+            'longitude' => 'required|string|max:255',
+            'mac_address' => 'required|string|max:255',
+            'status' => 'required|string|max:20',
         ];
     }
 }

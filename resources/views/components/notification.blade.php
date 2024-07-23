@@ -29,29 +29,17 @@
             <hr class="dropdown-divider">
         </li>
         <li>
-            <a class="dropdown-item d-flex align-items-center" href="#!">
+            <a class="dropdown-item d-flex align-items-center" href="{{ route('contacts.index') }}">
                 <span>
-                    <i class="bi bi-person-fill me-2"></i>
-                    <span class="fs-7">Friend Requests</span>
+                    <i class="bi bi-envelope-open-fill me-2"></i>
+                    <span class="fs-7">All messages</span>
                 </span>
-                <span class="fs-7 ms-auto text-secondary">17 hours</span>
+                <span class="fs-7 ms-auto text-secondary">{{ \App\Models\Contact::all()->count() }}</span>
             </a>
         </li>
         <li>
             <hr class="dropdown-divider">
         </li>
-        <li>
-            <a class="dropdown-item d-flex align-items-center" href="#!">
-                <span>
-                    <i class="bi bi-file-earmark-fill me-2"></i>
-                    <span class="fs-7">New Reports</span>
-                </span>
-                <span class="fs-7 ms-auto text-secondary">3 days</span>
-            </a>
-        </li>
-        <li>
-            <hr class="dropdown-divider">
-        </li>
-        <li><a class="dropdown-item fs-7 text-center" href="{{ route('contacts.index') }}">See All Notifications</a></li>
+        {{-- <li><a class="dropdown-item fs-7 text-center" href="{{ route('contacts.index') }}">See All Notifications</a></li> --}}
     </ul>
 </li>
