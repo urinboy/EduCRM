@@ -3,6 +3,7 @@
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\OrganizationController;
@@ -44,5 +45,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('cities', CityController::class);
     Route::get('states', [CityController::class, 'getStates'])->name('states.get');
     Route::resource('organizations', OrganizationController::class);   
+    Route::resource('currencies', CurrencyController::class);
     Route::get('/profile', [AccountController::class, 'index'])->name('profile');
 });

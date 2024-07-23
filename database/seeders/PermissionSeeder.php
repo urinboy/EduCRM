@@ -53,6 +53,20 @@ class PermissionSeeder extends Seeder
             'organization-edit',
             'organization-delete',
 
+            // currencies
+            'currency-list',
+            'currency-create',
+            'currency-show',
+            'currency-edit',
+            'currency-delete',
+
+            // contact
+            'contact-list',
+            'contact-create',
+            'contact-show',
+            'contact-edit',
+            'contact-delete',
+
         ];
          
         foreach ($permissions as $permission) {

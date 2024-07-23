@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('can', __('user'))
-@section('name', __('users'))
+@section('can', __('currency'))
+@section('name', __('currencies'))
 @section('title', __('section.title_manage', ['name' => ucfirst($__env->yieldContent('name'))]))
 
 @section('heading')
@@ -40,9 +40,8 @@
                 <table class="table  table-striped  table-bordered">
                     <tr>
                         <th>{{ __('№') }}</th>
-                        <th>{{ __('User') }} {{ __('Name') }}</th>
-                        <th>{{ __('Email') }}</th>
-                        <th>{{ __('Roles') }}</th>
+                        <th>{{ __('Name') }}</th>
+                        <th>{{ __('Code') }}</th>
                         <th width="280px">{{ __('Action') }}</th>
                     </tr>
                     @if (count($data) > 0)
@@ -50,14 +49,7 @@
                             <tr>
                                 <td>{{ ++$i }}</td>
                                 <td>{{ $value->name }}</td>
-                                <td>{{ $value->email }}</td>
-                                <td>
-                                    @if (!empty($value->getRoleNames()))
-                                        @foreach ($value->getRoleNames() as $v)
-                                            <label class="badge bg-success">{{ $v }}</label>
-                                        @endforeach
-                                    @endif
-                                </td>
+                                <td><strong>{{ $value->code }}</strong></td>
                                 <td>
                                     @can($__env->yieldContent('can') . '-show')
                                         <a class="btn btn-info btn-sm m-1 w-30"

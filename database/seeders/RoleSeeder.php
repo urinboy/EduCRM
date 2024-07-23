@@ -33,7 +33,14 @@ class RoleSeeder extends Seeder
             'product-create',
             'product-show',
             'product-edit',
-            'product-delete'
+            'product-delete',
+
+            // contact
+            'contact-list',
+            'contact-create',
+            'contact-show',
+            'contact-edit',
+            'contact-delete',
 
         ]);
 
@@ -53,6 +60,9 @@ class RoleSeeder extends Seeder
             // products
             'product-list',
             'product-show',
+
+            // contact
+            'contact-create',
         ]);
 
         $user = Role::create(['name' => 'User']);

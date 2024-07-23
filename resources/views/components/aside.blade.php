@@ -148,6 +148,16 @@
                                         </a>
                                     </li>
                                 @endcan
+                                @can('currency-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('currencies.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Currencies') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
 
                                 {{-- <li class="nav-item">
                                     <a class="nav-link link-secondary" aria-current="page" href="#!">
