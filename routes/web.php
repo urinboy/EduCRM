@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CurrencyController;
@@ -46,5 +47,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('states', [CityController::class, 'getStates'])->name('states.get');
     Route::resource('organizations', OrganizationController::class);   
     Route::resource('currencies', CurrencyController::class);
+    Route::resource('addresses', AddressController::class);
     Route::get('/profile', [AccountController::class, 'index'])->name('profile');
 });

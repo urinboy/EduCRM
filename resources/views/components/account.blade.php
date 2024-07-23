@@ -81,11 +81,6 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
-            {{-- <a class="dropdown-item text-center" href="#!">
-                <span>
-                    <span class="fs-7">Log Out</span>
-                </span>
-            </a> --}}
         </li>
     </ul>
 </li>

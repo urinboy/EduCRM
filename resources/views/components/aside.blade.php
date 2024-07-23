@@ -158,6 +158,16 @@
                                         </a>
                                     </li>
                                 @endcan
+                                @can('address-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('addresses.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('Addresses') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
 
                                 {{-- <li class="nav-item">
                                     <a class="nav-link link-secondary" aria-current="page" href="#!">
