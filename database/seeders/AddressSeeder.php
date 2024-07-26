@@ -13,13 +13,13 @@ class AddressSeeder extends Seeder
     public function run(): void
     {
         Address::create([
-            'country_id' => 1,
-            'state_id' => 1,
-            'city_id' => 1,
-            'district' => 'District A',
-            'street' => 'Street A',
-            'zip_code' => '10001',
-            'detail' => 'Detailed address A',
+            'country_id' => 234,
+            'state_id' => 7,
+            'city_id' => 15,
+            'district' => 'Keneges OFY',
+            'street' => 'Keneges awil 11-uy',
+            'zip_code' => '231318',
+            'detail' => "Mahalla fuqarolar yig'inidagi boshqaruv bo'limi.",
         ]);
 
         Address::create([

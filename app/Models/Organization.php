@@ -16,6 +16,6 @@ class Organization extends Model
 
     public function accounts(): HasMany
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Account::class);
     }
 }

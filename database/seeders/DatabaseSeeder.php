@@ -2,16 +2,16 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Organization;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
+    
     public function run(): void
     {
+        // Organization::factory()->count(10)->create();
+        
         $this->call([
             PermissionSeeder::class,
             RoleSeeder::class,
@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             CitySeeder::class,
             CurrencySeeder::class,
             AddressSeeder::class,
+            OrganizationSeeder::class,
+            AccountSeeder::class,
         ]);
     }
 }

@@ -20,15 +20,11 @@ class Account extends Model
         'gender',
         'bio',
         'phone',
-        'organization',
-        'country_id',
-        'state_id',
-        'city_id',
-        'address',
-        'zip_code',
+        'organization_id',
+        'address_id',
         'language_id',
-        'currency',
-        'status'
+        'currency_id',
+        'status',
     ];
 
     public function user(): BelongsTo
@@ -36,28 +32,29 @@ class Account extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function country(): BelongsTo
-    {
-        return $this->belongsTo(Country::class);
-    }
-
-    public function state(): BelongsTo
-    {
-        return $this->belongsTo(State::class);
-    }
-
-    public function city(): BelongsTo
-    {
-        return $this->belongsTo(City::class);
-    }
-
+    
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
     }
 
+    
+    public function address(): BelongsTo
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+    
     public function language(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Language::class);
     }
+
+
+    public function currency(): BelongsTo
+    {
+        return $this->belongsTo(Currency::class);
+    }
+
+    
 }

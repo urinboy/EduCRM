@@ -23,10 +23,10 @@ Route::prefix('/')->group(function () {
     Route::get('/', [PageController::class, 'index']);
     Route::get('/privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacyPolicy');
     Route::get('/terms-of-service', [PageController::class, 'termsOfServices'])->name('termsOfServices');
-    
+
     Route::prefix('/contact')->group(function () {
         Route::get('/', [ContactController::class, 'create'])->name('contacts.create');
-        Route::post('/', [ContactController::class,'store'])->name('contacts.store');
+        Route::post('/', [ContactController::class, 'store'])->name('contacts.store');
     });
 });
 
@@ -34,7 +34,7 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     Route::prefix('/contact')->group(function () {
         Route::get('/index', [ContactController::class, 'index'])->name('contacts.index');
         Route::get('/view/{contact}', [ContactController::class, 'show'])->name('contacts.show');
@@ -45,8 +45,15 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('products', ProductController::class);
     Route::resource('cities', CityController::class);
     Route::get('states', [CityController::class, 'getStates'])->name('states.get');
-    Route::resource('organizations', OrganizationController::class);   
+    Route::resource('organizations', OrganizationController::class);
     Route::resource('currencies', CurrencyController::class);
     Route::resource('addresses', AddressController::class);
-    Route::get('/profile', [AccountController::class, 'index'])->name('profile');
+    Route::resource('accounts', AccountController::class);
+
+    Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
+    Route::put('/profile', [AccountController::class, 'profileUpdate'])->name('profile.update');
+    Route::get('/get-states', [AccountController::class, 'getStates'])->name('getStates');
+    Route::get('/get-cities', [AccountController::class, 'getCities'])->name('getCities');
+    Route::put('accounts/{account}/address', [AccountController::class, 'addressUpdate'])->name('profile.address.update');
+    Route::put('/profile/password', [AccountController::class, 'passwordUpdate'])->name('profile.password.update');
 });

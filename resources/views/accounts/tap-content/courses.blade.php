@@ -1,0 +1,1 @@
+<div>{{ __('message.data_not_available') }}</div>
