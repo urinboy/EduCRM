@@ -21,6 +21,12 @@
             {{ $value }}
         </div>
     @endsession
+    
+    @session('error')
+        <div class="alert alert-danger" role="alert" id="error-alert">
+            {{ $value }}
+        </div>
+    @endsession
 
     @if (count($errors) > 0)
         <div class="alert alert-danger">
@@ -482,22 +488,9 @@
     </div> --}}
 
 
+    @include('accounts.modals.upload_delete-photo')
     @include('accounts.modals.update-profile')
     @include('accounts.modals.update-address')
-
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-
-            // Hide success alert after 3 seconds
-            var successAlert = document.getElementById('success-alert');
-            if (successAlert) {
-                setTimeout(function() {
-                    successAlert.style.display = 'none';
-                }, 5000);
-            }
-        });
-    </script>
     
 @endsection
-@vite('resources/js/addressUpdate.js')
+@vite(['resources/js/alert.js', 'resources/js/addressUpdate.js', 'resources/js/photoUpdate.js'])

@@ -22,13 +22,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('dist/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/root.css') }}">
-    <link rel="stylesheet" href="{{ asset('dist/css/sidebar.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('dist/css/sidebar.css')}}">
     <link rel="stylesheet" href="{{ asset('dist/css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('dist/css/animate.min.css') }}">
-    <link href="{{ asset('dist/css/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('dist/css/swiper-bundle.min.css') }}" rel="stylesheet"> --}}
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/css/navbar.css', 'resources/css/sidebar.css', 'resources/css/animate.min.css', 'resources/js/app.js'])
 </head>
 
 <body>

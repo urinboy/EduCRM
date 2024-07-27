@@ -28,6 +28,10 @@ Route::prefix('/')->group(function () {
         Route::get('/', [ContactController::class, 'create'])->name('contacts.create');
         Route::post('/', [ContactController::class, 'store'])->name('contacts.store');
     });
+
+    Route::get('/user-info', function () {
+        return view('users.userInfo');
+    });
 });
 
 Auth::routes();
@@ -50,10 +54,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('addresses', AddressController::class);
     Route::resource('accounts', AccountController::class);
 
+    Route::get('/u/{name}', [AccountController::class, 'index'])->name('user.profile');
     Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
     Route::put('/profile', [AccountController::class, 'profileUpdate'])->name('profile.update');
     Route::get('/get-states', [AccountController::class, 'getStates'])->name('getStates');
     Route::get('/get-cities', [AccountController::class, 'getCities'])->name('getCities');
     Route::put('accounts/{account}/address', [AccountController::class, 'addressUpdate'])->name('profile.address.update');
+    Route::post('/account/upload-photo', [AccountController::class, 'uploadPhoto'])->name('account.uploadPhoto');
+    Route::delete('/account/delete-photo', [AccountController::class, 'deletePhoto'])->name('account.deletePhoto');
     Route::put('/profile/password', [AccountController::class, 'passwordUpdate'])->name('profile.password.update');
 });

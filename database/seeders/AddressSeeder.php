@@ -17,19 +17,19 @@ class AddressSeeder extends Seeder
             'state_id' => 7,
             'city_id' => 15,
             'district' => 'Keneges OFY',
-            'street' => 'Keneges awil 11-uy',
+            'street' => 'Keneges awil',
             'zip_code' => '231318',
             'detail' => "Mahalla fuqarolar yig'inidagi boshqaruv bo'limi.",
         ]);
 
         Address::create([
-            'country_id' => 2,
-            'state_id' => 2,
-            'city_id' => 2,
-            'district' => 'District B',
-            'street' => 'Street B',
-            'zip_code' => '20002',
-            'detail' => 'Detailed address B',
+            'country_id' => 234,
+            'state_id' => 7,
+            'city_id' => 15,
+            'district' => 'Keneges OFY',
+            'street' => 'Keneges',
+            'zip_code' => '231318',
+            'detail' => "Umumiy o'rta talim makrtab",
         ]);
     }
 }

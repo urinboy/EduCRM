@@ -23,23 +23,31 @@ class OrganizationSeeder extends Seeder
         ]);
 
         Organization::create([
-            'name' => 'Green Energy Solutions',
-            'address' => '5678 Eco Park, Austin, TX',
+            'name' => "Ingliz tilini o'rganish markazi",
+            'address' => 'Taxiatosh tumani (Qoraqalpog’iston Respublikasi)',
+            'phone' => '+998 90 707 86 42',
+            'email' => 'itom@keneges.uz',
+            'website' => 'https://t.me/Yeshbayeva_Aynur',
+        ]);
+
+        Organization::create([
+            'name' => '16-sonli maktab',
+            'address' => 'Taxiatosh tumani (Qoraqalpog’iston Respublikasi)',
             'phone' => '555-234-5678',
-            'email' => 'info@greenenergy.com',
-            'website' => 'https://www.greenenergy.com',
+            'email' => '16-maktab@keneges.uz',
+            'website' => 'https://schools.emaktab.uz/v2/school?school=1000003854426',
         ]);
 
         Organization::create([
-            'name' => 'Healthcare Heroes',
-            'address' => '910 Health Blvd, New York, NY',
-            'phone' => '555-345-6789',
-            'email' => 'support@healthcareheroes.com',
-            'website' => 'https://www.healthcareheroes.com',
+            'name' => '	Taxiatosh 17-sonli umumiy o‘rta ta‘lim maktabi',
+            'address' => 'Taxiatosh tumani (Qoraqalpog’iston Respublikasi)',
+            'phone' => '+998(99)079-70-22',
+            'email' => 'Taxiatosh17maktab@inbox.uz',
+            'website' => 'https://schools.emaktab.uz/v2/school?school=1000003854427',
         ]);
 
         Organization::create([
-            'name' => 'Educational Excellence',
+            'name' => "Taxiatosh tumani 18-sonli umumiy o'rta ta'lim maktabi",
             'address' => '111 Learning Lane, Boston, MA',
             'phone' => '555-456-7890',
             'email' => 'contact@edexcellence.com',

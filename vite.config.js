@@ -6,8 +6,13 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/sass/app.scss',
+                'resources/css/navbar.css',
+                'resources/css/sidebar.css',
+                'resources/css/animate.min.css',
                 'resources/js/app.js',
+                'resources/js/alert.js',
                 'resources/js/addressUpdate.js',
+                'resources/js/photoUpdate.js',
             ],
             refresh: true,
         }),

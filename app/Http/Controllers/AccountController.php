@@ -19,22 +19,27 @@ use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
-    // public function index(){
-    //     if(Auth::user()->id ){
-    //     $organizations = Organization::all();
-    //     $addresses = Address::all();
-    //     $languages = Language::all();
-    //     $currencies = Currency::all();
-    //     $data = Account::find(Auth::user()->id);
-    //     // dd($data); die;
-    //     // dd();
-    //     return view("account.profile", compact("data", 'organizations', 'addresses', 'languages', 'currencies'));
-    // }else{
-    //     return view('');
-    // }
-    // }
+    public function index(String $name){
+        $user = User::where('name', $name)->firstOrFail();
+        
+        $account = Account::where("user_id", $user->id)->first();
+        // dd($account);
+        if ($account == null) {
+            return abort('404');
+        }
+        $organizations = Organization::all();
+        $addresses = Address::all();
+        $languages = Language::all();
+        $currencies = Currency::all();
+        $countries = Country::all();
+        $states = State::all();
+        $cities = City::all();
+        // $account = $user->account;
+        return view('accounts.index', compact('account', 'organizations', 'addresses', 'languages', 'currencies', 'countries', 'states', 'cities'));
 
-    public function profile(){
+    }
+
+    public function profile(Request $request){
         $user = Auth::user();
 
         // Foydalanuvchining Account ma'lumotlarini tekshirish
@@ -51,6 +56,48 @@ class AccountController extends Controller
         $cities = City::all();
         $account = $user->account;
         return view('accounts.profile', compact('account', 'organizations', 'addresses', 'languages', 'currencies', 'countries', 'states', 'cities'));
+    }
+
+    public function uploadPhoto(Request $request)
+    {
+        $request->validate([
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user = Auth::user();
+        $account = $user->account;
+
+        if ($request->hasFile('photo')) {
+            // Delete old photo
+            if ($account->photo) {
+                Storage::delete('public/' . $account->photo);
+            }
+
+            // Store new photo
+            $path = $request->file('photo')->store('photos', 'public');
+            $account->photo = $path;
+            $account->save();
+
+            return redirect()->back()->with('success', 'Photo updated successfully.');
+        }
+
+        return redirect()->back()->with('error', 'Photo upload failed.');
+    }
+
+    public function deletePhoto()
+    {
+        $user = Auth::user();
+        $account = $user->account;
+
+        if ($account->photo) {
+            Storage::delete('public/' . $account->photo);
+            $account->photo = null;
+            $account->save();
+
+            return redirect()->back()->with('success', 'Photo deleted successfully.');
+        }
+
+        return redirect()->back()->with('error', 'No photo to delete.');
     }
 
     public function create()
@@ -142,70 +189,10 @@ class AccountController extends Controller
         return redirect()->route('profile', $account->id)->with('success', 'Address updated successfully.');
     }
 
-    // public function addressUpdate(Request $request)
-    // {
-    //     // Validate the request data
-    //     $request->validate([
-    //         'country_id' => 'required',
-    //         'state_id' => 'required',
-    //         'city_id' => 'required',
-    //         'district' => 'required|string|max:255',
-    //         'street' => 'required|string|max:255',
-    //         'zip_code' => 'required|string|max:10',
-    //         'detail' => 'nullable|string|max:500',
-    //     ]);
 
-    //     // Get the authenticated user's ID
-    //     $userId = Auth::user()->id;
-
-    //     // Find the user's account record
-    //     $account = Account::where('user_id', $userId)->first();
-
-    //     if ($account) {
-    //         // Update the address details
-    //         $account->country_id = $request->input('country');
-    //         $account->state_id = $request->input('state');
-    //         $account->city_id = $request->input('city');
-    //         $account->district = $request->input('district');
-    //         $account->street = $request->input('street');
-    //         $account->zip_code = $request->input('zip_code');
-    //         $account->detail = $request->input('detail');
-
-    //         // Save the updated account record
-    //         $account->save();
-
-    //         return redirect()->route('profile')->with('success', 'Address yangilandi');
-    //     } else {
-    //         return redirect()->route('profile')->with('error', 'Account topilmadi');
-    //     }
-    // }
-    
-    
-    // public function profileUpdate(AccountRequest $request, Account $account)
-    // {
-    //     // $user = Auth::user(); 
-    //     // $account = Account::find($request->id);
-
-    //     $validated = $request->validated();
-
-    //     if ($request->hasFile('photo')) {
-    //         // Delete old photo if exists
-    //         if ($account->photo) {
-    //             Storage::delete($account->photo);
-    //         }
-    //         // Store new photo
-    //         $path = $request->file('photo')->store('photos', 'public');
-    //         $validated['photo'] = $path;
-    //     }
-
-    //     $account->update($validated);
-
-    //     return redirect()->route('profile', $account->id)->with('success', 'Profile updated successfully.');
-    // }
 
     public function profileUpdate(Request $request)
     {
-        // dd($request->birthday); die;
 
         // Validate the request data
         $request->validate([
@@ -216,6 +203,7 @@ class AccountController extends Controller
             'phone' => 'required|string|max:13',
             'birthday' => 'required|date',
             'gender' => 'required|string|in:male,female,other',
+            'bio' => 'nullable|string|max:1000',
         ]);
 
         // Get the authenticated user's ID
@@ -228,7 +216,7 @@ class AccountController extends Controller
         if ($user && $account) {
             // Update the user with the new profile details
             $user->update([
-                'username' => $request->username,
+                'name' => $request->username,
             ]);
 
             // Update the account with the new profile details
@@ -239,6 +227,7 @@ class AccountController extends Controller
                 'phone' => $request->phone,
                 'birthday' => $request->birthday,
                 'gender' => $request->gender,
+                'bio' => $request->bio,
             ]);
 
             // Redirect back with success message

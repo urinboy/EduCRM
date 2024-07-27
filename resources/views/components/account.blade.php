@@ -1,8 +1,14 @@
+@php
+    $account = \App\Models\Account::where("user_id", Auth::user()->id)->first();
+@endphp
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle bsb-dropdown-toggle-caret-disable" href="#" role="button"
         data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png" width="35" height="35"
-            class="img-fluid rounded-circle" alt="Luke Reeves">
+            @if ($account->photo)
+                <img src="{{ asset('storage/' . $account->photo) }}" width="35" height="35" class="img-fluid rounded-circle" alt="{{ Auth::user()->name }}">
+            @else
+                <img src="{{ asset('dist/img/no-photo.png') }}" width="35" height="35"  class="img-fluid rounded" alt="Profile Picture">
+            @endif
     </a>
     <ul class="dropdown-menu dropdown-menu-md-end bsb-dropdown-animation bsb-fadeIn">
         <li>
@@ -15,8 +21,11 @@
             <a href="#" class="dropdown-item" aria-current="true">
                 <div class="row g-0 align-items-center">
                     <div class="col-3">
-                        <img src="https://new.urinboydev.uz/static/media/favicon.9f15ba03dac502a26263.png"
-                            width="55" height="55" class="img-fluid rounded-circle" alt="Luke Reeves">
+                        @if ($account->photo)
+                            <img src="{{ asset('storage/' . $account->photo) }}" width="55" height="55" class="img-fluid rounded-circle" alt="{{ Auth::user()->name }}">
+                        @else
+                            <img src="{{ asset('dist/img/no-photo.png') }}" width="55" height="55"  class="img-fluid rounded" alt="Profile Picture">
+                        @endif
                     </div>
                     <div class="col-9">
                         <div class="ps-3">

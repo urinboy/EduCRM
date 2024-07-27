@@ -1,0 +1,34 @@
+{
+    "users":"users",
+    "user":"foydalanuvchi",
+
+    "roles":"roles",
+    "role":"role",
+    
+    "languages":"languages",
+    "language":"language",
+    
+    "products":"products",
+    "product":"product",
+    
+    "contacts":"contacts",
+    "contact":"contact",
+    
+    "messages":"messages",
+    "message":"message",
+    
+    "cities":"cities",
+    "city":"city",
+    
+    "organizations":"organizations",
+    "organization":"organization",
+    
+    "currencies":"currencies",
+    "currrency":"currrency",
+    
+    "addresses":"addresses",
+    "address":"address",
+    
+    "accounts":"accounts",
+    "account":"account"
+}
