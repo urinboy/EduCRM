@@ -1,0 +1,22 @@
+$color_1: #323232;
+
+.tab-content {
+	>.tab-pane {
+		display: none;
+	}
+	>.active {
+		display: block;
+	}
+}
+a.nav-link {
+	color: $color_1;
+}
+.profile-img {
+	width: 100%;
+	object-fit: cover;
+}
+.custom-card {
+	border-radius: 15px;
+	padding: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

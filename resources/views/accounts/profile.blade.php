@@ -34,31 +34,6 @@
         </div>
     @endif
 
-    <style>
-        .tab-content>.tab-pane {
-            display: none;
-        }
-
-        .tab-content>.active {
-            display: block;
-        }
-
-        a.nav-link{
-            color: #323232;
-        } 
-
-        .profile-img {
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .custom-card {
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-
     <div class="row">
         <div class="col-12 col-md-3">
             <ul class="nav flex-column nav-pills mb-3 custom-card  bg-white  show  p-2 rounded" id="account-tabs" role="tablist">
@@ -493,4 +468,4 @@
     @include('accounts.modals.update-address')
     
 @endsection
-@vite(['resources/js/alert.js', 'resources/js/addressUpdate.js', 'resources/js/photoUpdate.js'])
+@vite(['resources/js/addressUpdate.js', 'resources/js/photoUpdate.js'])

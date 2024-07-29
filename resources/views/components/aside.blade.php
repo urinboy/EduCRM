@@ -94,7 +94,7 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Users') }}</span>
+                                            <span class="nav-link-text">{{ __('users') }}</span>
                                         </a>
                                     </li>
                                 @endcan
@@ -104,7 +104,7 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Roles') }}</span>
+                                            <span class="nav-link-text">{{ __('roles') }}</span>
                                         </a>
                                     </li>
                                 @endcan
@@ -114,7 +114,7 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Languages') }}</span>
+                                            <span class="nav-link-text">{{ __('languages') }}</span>
                                         </a>
                                     </li>
                                 @endcan
@@ -124,7 +124,7 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Products') }}</span>
+                                            <span class="nav-link-text">{{ __('products') }}</span>
                                         </a>
                                     </li>
                                 @endcan
@@ -134,7 +134,7 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Cities') }}</span>
+                                            <span class="nav-link-text">{{ __('cities') }}</span>
                                         </a>
                                     </li>
                                 @endcan
@@ -144,7 +144,7 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Organizations') }}</span>
+                                            <span class="nav-link-text">{{ __('organizations') }}</span>
                                         </a>
                                     </li>
                                 @endcan
@@ -154,7 +154,7 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Currencies') }}</span>
+                                            <span class="nav-link-text">{{ __('currencies') }}</span>
                                         </a>
                                     </li>
                                 @endcan
@@ -164,7 +164,17 @@
                                             <div class="nav-link-icon text-success-emphasis">
                                                 <i class="bi bi-arrow-right-short"></i>
                                             </div>
-                                            <span class="nav-link-text">{{ __('Addresses') }}</span>
+                                            <span class="nav-link-text">{{ __('addresses') }}</span>
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('category-list')
+                                    <li class="nav-item">
+                                        <a class="nav-link  link-secondary" href="{{ route('categories.index') }}">
+                                            <div class="nav-link-icon text-success-emphasis">
+                                                <i class="bi bi-arrow-right-short"></i>
+                                            </div>
+                                            <span class="nav-link-text">{{ __('categories') }}</span>
                                         </a>
                                     </li>
                                 @endcan

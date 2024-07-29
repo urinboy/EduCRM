@@ -6,6 +6,7 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/sass/app.scss',
+                'resources/css/app.css',
                 'resources/css/navbar.css',
                 'resources/css/sidebar.css',
                 'resources/css/animate.min.css',
@@ -17,4 +18,9 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    resolve: {
+        alias: {
+            '@': '/resources/js',
+        },
+    },
 });

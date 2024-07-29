@@ -74,6 +74,13 @@ class PermissionSeeder extends Seeder
             'address-edit',
             'address-delete',
 
+            // address
+            'category-list',
+            'category-create',
+            'category-show',
+            'category-edit',
+            'category-delete',
+
         ];
          
         foreach ($permissions as $permission) {

@@ -1,12 +1,12 @@
 {
-    "users":"users",
+    "users":"foydalanuvchilar",
     "user":"foydalanuvchi",
 
     "roles":"roles",
     "role":"role",
     
     "languages":"languages",
-    "language":"language",
+    "language":"til",
     
     "products":"products",
     "product":"product",

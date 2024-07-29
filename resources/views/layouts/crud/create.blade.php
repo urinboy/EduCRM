@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('can', __('user'))
-@section('name', __('users'))
-@section('title', __('section.title_create', ['name' => lcfirst($__env->yieldContent('can'))]))
+@section('name', 'users')
+@section('title', __('section.title_create', ['name' => $__env->yieldContent('can')]))
 
 @section('heading')
     <h1 class="h3">@yield('title')</h1>

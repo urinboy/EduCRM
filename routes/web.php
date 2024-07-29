@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CurrencyController;
@@ -63,4 +64,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/account/upload-photo', [AccountController::class, 'uploadPhoto'])->name('account.uploadPhoto');
     Route::delete('/account/delete-photo', [AccountController::class, 'deletePhoto'])->name('account.deletePhoto');
     Route::put('/profile/password', [AccountController::class, 'passwordUpdate'])->name('profile.password.update');
+
+    Route::resource('categories', CategoryController::class);
 });

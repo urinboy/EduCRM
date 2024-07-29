@@ -39,6 +39,61 @@ class AccountController extends Controller
 
     }
 
+    public function create()
+    {
+        $user = Auth::user();
+        return view('accounts.create', compact('user'));
+    }
+
+    public function store(AccountRequest $request)
+    {
+        $data = $request->all();
+        $data['user_id'] = Auth::id();
+
+        if ($request->hasFile('photo')) {
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
+
+        Account::create($data);
+
+        return redirect()->route('profile')->with('success', 'Account created successfully.');
+    
+    }
+
+    public function show(Account $account)
+    {
+        //
+    }
+
+    public function edit(Account $account)
+    {
+        //
+    }
+    
+    public function update(AccountRequest $request, Account $account)
+    {
+        $data = $request->validated();
+
+        if ($request->hasFile('photo')) {
+            // Delete old photo if exists
+            if ($account->photo && Storage::disk('public')->exists($account->photo)) {
+                Storage::disk('public')->delete($account->photo);
+            }
+
+            // Store new photo
+            $data['photo'] = $request->file('photo')->store('photos', 'public');
+        }
+
+        $account->update($data);
+
+        return redirect()->route('accounts.index')->with('success', 'Account updated successfully.');
+    }
+
+    public function destroy(Account $account)
+    {
+        //
+    }
+
     public function profile(Request $request){
         $user = Auth::user();
 
@@ -99,57 +154,6 @@ class AccountController extends Controller
 
         return redirect()->back()->with('error', 'No photo to delete.');
     }
-
-    public function create()
-    {
-        $user = Auth::user();
-        return view('accounts.create', compact('user'));
-    }
-
-    public function store(AccountRequest $request)
-    {
-        $data = $request->all();
-        $data['user_id'] = Auth::id();
-
-        if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('photos', 'public');
-        }
-
-        Account::create($data);
-
-        return redirect()->route('profile')->with('success', 'Account created successfully.');
-    
-    }
-
-    public function show(Account $account)
-    {
-        //
-    }
-
-    public function edit(Account $account)
-    {
-        //
-    }
-
-    // public function update(AccountRequest $request, Account $account)
-    // {
-    //     $data = $request->validated();
-
-    //     if ($request->hasFile('photo')) {
-    //         // Delete old photo if exists
-    //         if ($account->photo && Storage::disk('public')->exists($account->photo)) {
-    //             Storage::disk('public')->delete($account->photo);
-    //         }
-
-    //         // Store new photo
-    //         $data['photo'] = $request->file('photo')->store('photos', 'public');
-    //     }
-
-    //     $account->update($data);
-
-    //     return redirect()->route('accounts.index')->with('success', 'Account updated successfully.');
-    // }
-
     
     public function getStates(Request $request)
     {
@@ -188,8 +192,6 @@ class AccountController extends Controller
 
         return redirect()->route('profile', $account->id)->with('success', 'Address updated successfully.');
     }
-
-
 
     public function profileUpdate(Request $request)
     {
@@ -231,7 +233,7 @@ class AccountController extends Controller
             ]);
 
             // Redirect back with success message
-            return redirect()->route('profile')->with('success', 'Profile yangilandi');
+            return redirect()->route('profile')->with('success', 'Profile successfully updated');
         }
 
         // If user or account not found, redirect back with error message
@@ -260,8 +262,4 @@ class AccountController extends Controller
         return redirect()->route('profile')->with('success', 'Password updated successfully.');
     }
 
-    public function destroy(Account $account)
-    {
-        //
-    }
 }
