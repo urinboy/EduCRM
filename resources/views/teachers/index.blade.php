@@ -60,7 +60,7 @@
         }
     </style>
     <div class="col-lg-12 users-list" data-select2-id="24">
-        <div class="page-header bg-white mb-4 p-4 border rounded">
+        {{-- <div class="page-header bg-white mb-4 p-4 border rounded">
             <select class="form-select bg-white select2 page-select" aria-label="Select Options">
                 <option value="0">Select Options</option>
                 <option value="1">Active</option>
@@ -77,125 +77,56 @@
                     </button>
                 </div>
             </div>
-        </div>
-
+        </div> --}}
 
         <div class="card bg-white my-3">
             <div class="card-body">
                 <div class="user-tabel table-responsive">
-                    {{-- @php
-                        $teacherUsers = $users->filter(function ($user) {
-                            return $user->getRolesName() === 'Teacher';
-                        });
-                    @endphp --}}
-
-                    @if ($users->isEmpty())
+                    @if ($teachers->isEmpty())
                         <p>No teachers found.</p>
                     @else
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Subject</th>
+                                    <th>#</th>
+                                    <th>Photo</th>
+                                    <th>Account Name</th>
+                                    <th>Hire Date</th>
+                                    <th>Date of Resignation</th>
+                                    <th>Work Experience</th>
+                                    <th>Created At</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
-                                    @foreach ($teachers as $teacher)
-                                        @if ($teacher->user_id == $user->id)
-                                            <tr>
-                                                <td>{{ $teacher->id }}</td>
-                                                <td>{{ $user->name }}</td>
-                                                <td>{{ $user->email }}</td>
-                                                <td>{{ $teacher->subject }}</td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
+                                @foreach ($teachers as $key =>  $teacher)
+                                    <tr>
+                                        <td>{{ ++$key }}</td>
+                                        <td>
+                                            @if ($teacher->account->photo)
+                                                <img src="{{ asset('storage/' . $teacher->account->photo) }}"
+                                                    class="img-fluid rounded mb-2" alt="Profile Photo" width="64px">
+                                            @else
+                                                <img src="{{ asset('dist/img/no-photo.png') }}"
+                                                    class="img-fluid rounded mb-2" alt="Profile Photo" width="64px">
+                                            @endif
+                                        </td>
+                                        <td>{{ $teacher->account->first_name . ' ' . $teacher->account->last_name . ' ' . $teacher->account->middle_name }}</td>
+                                        <td>{{ date('d.m.Y', strtotime($teacher->hire_date)) }}</td>
+                                        <td>{{ $teacher->date_of_resignation }}</td>
+                                        <td>{{ $teacher->work_experience }}</td>
+                                        <td> {{ date('d.m.Y', strtotime($teacher->created_at)) }}</td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     @endif
-                    {{-- <table class="table card-table table-bordered table-hover table-vcenter text-nowrap table-user">
-                        <tbody>
-                            <tr>
-                                <th class="font-weight-bold">Member</th>
-                                <th class="font-weight-bold">Name</th>
-                                <th class="font-weight-bold">Membership Status</th>
-                                <th class="font-weight-bold">Member Since</th>
-                                <th class="font-weight-bold"></th>
-                            </tr>
-                            
-                            <tr>
-                                <td class=""><span class="avatar avatar-md  d-block brround cover-image"
-                                        data-bs-image-src="../assets/images/users/female/20.jpg"
-                                        style="background: url(&quot;../assets/images/users/female/20.jpg&quot;) center center;"></span>
-                                </td>
-                                <td><a href="userprofile.html" class="text-dark font-weight-bold">Jane Pearson</a></td>
-                                <td><a href="javascript:void(0)" class="badge bg-success">Active</a></td>
-                                <td>December-05-2018</td>
-                                <td class="text-center"> <a href="userprofile.html"
-                                        class="btn btn-outline-primary btn-sm me-1" data-bs-toggle="tooltip"
-                                        data-bs-original-title="View"><i class="fa-solid fa-eye"></i></a> <a
-                                        href="edit-posts.html" class="btn btn-outline-success btn-sm me-1"
-                                        data-bs-toggle="tooltip" data-bs-original-title="Edit"><i
-                                            class="fa-solid fa-pen-to-square"></i></a> <a href="javascript:void(0)"
-                                        class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Delete"><i class="fa-solid fa-trash"></i></a> </td>
-                            </tr>
-                            
-                            <tr>
-                                <td><span class="avatar avatar-md  d-block brround cover-image"
-                                        data-bs-image-src="../assets/images/users/female/16.jpg"
-                                        style="background: url(&quot;../assets/images/users/female/16.jpg&quot;) center center;"></span>
-                                </td>
-                                <td><a href="userprofile.html" class="text-dark font-weight-bold">Mary Butler</a></td>
-                                <td><a href="javascript:void(0)" class="badge bg-info">Paused</a></td>
-                                <td>November-29-2018</td>
-                                <td class="text-center"> <a href="userprofile.html"
-                                        class="btn btn-outline-primary btn-sm me-1" data-bs-toggle="tooltip"
-                                        data-bs-original-title="View"><i class="fa-solid fa-eye"></i></a> <a
-                                        href="edit-posts.html" class="btn btn-outline-success btn-sm me-1"
-                                        data-bs-toggle="tooltip" data-bs-original-title="Edit"><i
-                                            class="fa-solid fa-pen-to-square"></i></a> <a href="javascript:void(0)"
-                                        class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Delete"><i class="fa-solid fa-trash"></i></a> </td>
-                            </tr>
-                            
-                            <tr>
-                                <td><span class="avatar avatar-md  d-block brround cover-image"
-                                        data-bs-image-src="../assets/images/users/female/16.jpg"
-                                        style="background: url(&quot;../assets/images/users/female/16.jpg&quot;) center center;"></span>
-                                </td>
-                                <td><a href="userprofile.html" class="text-dark font-weight-bold">Rose Cook</a></td>
-                                <td><a href="javascript:void(0)" class="badge bg-danger">Blocked</a></td>
-                                <td>November-15-2018</td>
-                                <td class="text-center"> <a href="userprofile.html"
-                                        class="btn btn-outline-primary btn-sm me-1" data-bs-toggle="tooltip"
-                                        data-bs-original-title="View"><i class="fa-solid fa-eye"></i></a> <a
-                                        href="edit-posts.html" class="btn btn-outline-success btn-sm me-1"
-                                        data-bs-toggle="tooltip" data-bs-original-title="Edit"><i
-                                            class="fa-solid fa-pen-to-square"></i></a> <a href="javascript:void(0)"
-                                        class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip"
-                                        data-bs-original-title="Delete"><i class="fa-solid fa-trash"></i></a> </td>
-                            </tr>
-                            
-                        </tbody>
-                    </table> --}}
+
                 </div>
             </div>
         </div>
-        <ul class="pagination mb-0">
-            <li class="page-item page-prev disabled"> <a class="page-link" href="javascript:void(0)" tabindex="-1">Prev</a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">4</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">5</a></li>
-            <li class="page-item page-next"> <a class="page-link" href="javascript:void(0)">Next</a> </li>
-        </ul>
+        <div class="d-flex justify-content-center">
+            {{ $teachers->links() }}
+        </div>
     </div>
 
 @endsection

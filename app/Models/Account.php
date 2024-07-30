@@ -56,5 +56,9 @@ class Account extends Model
         return $this->belongsTo(Currency::class);
     }
 
+    public function teachers()
+    {
+        return $this->hasMany(Teacher::class);
+    }
     
 }

@@ -22,10 +22,8 @@ use Illuminate\Http\RedirectResponse;
 class TeacherController extends Controller
 {
     public function index(){
-        $users = User::all();
-        $roles = Role::all();
-        $teachers = Teacher::all();
-        return view("teachers.index", compact("teachers","users"));
+        $teachers = Teacher::with(['user', 'account'])->paginate(10); // Paginate with 10 items per page
+        return view('teachers.index', compact('teachers'));
     }
 
     public function create()
