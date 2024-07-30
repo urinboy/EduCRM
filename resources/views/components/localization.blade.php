@@ -1,7 +1,8 @@
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle bsb-dropdown-toggle-caret-disable d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <span class="position-relative pt-1">
-            <i class="bi bi-globe"></i>
+            {{-- <i class="bi bi-globe"></i> --}}
+            <i class="bi bi-translate"></i>
             <span class="fw-bold mx-1">{{ strtoupper(app()->getLocale()) }}</span>
         </span>
     </a>

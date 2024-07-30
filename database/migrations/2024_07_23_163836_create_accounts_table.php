@@ -22,10 +22,10 @@ return new class extends Migration
             $table->string('gender');
             $table->text('bio')->nullable();
             $table->string('phone')->nullable();
-            $table->foreignId('organization_id')->constrained('organizations')->onDelete('cascade')->nullable();
-            $table->foreignId('address_id')->constrained('addresses')->onDelete('cascade')->nullable();
-            $table->foreignId('language_id')->constrained('languages')->onDelete('cascade')->nullable();
-            $table->foreignId('currency_id')->constrained('currencies')->onDelete('cascade')->nullable();
+            $table->foreignId('organization_id')->nullable()->constrained('organizations')->onDelete('cascade');
+            $table->foreignId('address_id')->nullable()->constrained('addresses')->onDelete('cascade');
+            $table->foreignId('language_id')->nullable()->constrained('languages')->onDelete('cascade');
+            $table->foreignId('currency_id')->nullable()->constrained('currencies')->onDelete('cascade');
             $table->enum('status', ['active', 'inactive', 'unallowed', 'blocked'])->default('active');
             $table->timestamps();
         });

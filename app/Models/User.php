@@ -38,4 +38,16 @@ class User extends Authenticatable
     {
         return $this->hasOne(Account::class);
     }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function getRolesName()
+    {
+        // This should return the user's role. Implement your logic here.
+        return 'Teacher'; // Example static return value
+    }
+
 }

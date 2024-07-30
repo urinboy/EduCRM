@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('can', __('user'))
-@section('name', __('users'))
+@section('name', 'users')
 @section('title', __('section.view', ['show' => $user->name]))
 
 @section('heading')
@@ -10,7 +10,7 @@
         aria-label="breadcrumb">
         <ol class="breadcrumb m-0 fs-7">
             <li class="breadcrumb-item"><a class="link-primary text-decoration-none" href="{{ route('home') }}">{{ __('section.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route($__env->yieldContent('name').'.index') }}">{{  ucfirst($__env->yieldContent('name')) }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route($__env->yieldContent('name').'.index') }}">{{  ucfirst(__($__env->yieldContent('name'))) }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
         </ol>
     </nav>

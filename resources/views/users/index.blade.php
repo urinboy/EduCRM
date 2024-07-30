@@ -50,6 +50,7 @@
                             <td>{{ $value->email }}</td>
                             <td>
                                 @if (!empty($value->getRoleNames()))
+                                {{-- @dd() --}}
                                     @foreach ($value->getRoleNames() as $v)
                                         <label class="badge bg-success">{{ $v }}</label>
                                     @endforeach

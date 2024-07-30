@@ -8,8 +8,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CurrencyController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
@@ -58,12 +60,39 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/u/{name}', [AccountController::class, 'index'])->name('user.profile');
     Route::get('/profile', [AccountController::class, 'profile'])->name('profile');
     Route::put('/profile', [AccountController::class, 'profileUpdate'])->name('profile.update');
+
+    // Profil Account addressini update qilish uchun
     Route::get('/get-states', [AccountController::class, 'getStates'])->name('getStates');
     Route::get('/get-cities', [AccountController::class, 'getCities'])->name('getCities');
+
     Route::put('accounts/{account}/address', [AccountController::class, 'addressUpdate'])->name('profile.address.update');
     Route::post('/account/upload-photo', [AccountController::class, 'uploadPhoto'])->name('account.uploadPhoto');
     Route::delete('/account/delete-photo', [AccountController::class, 'deletePhoto'])->name('account.deletePhoto');
     Route::put('/profile/password', [AccountController::class, 'passwordUpdate'])->name('profile.password.update');
 
     Route::resource('categories', CategoryController::class);
+
+    Route::resource('teachers', TeacherController::class);
+
+    Route::prefix('/teacher')->name('teacher.')->group(function () {
+        Route::get('/userCreate', [TeacherController::class, 'userCreate'])->name('userCreate');
+        Route::post('/userStore', [TeacherController::class, 'userStore'])->name('userStore');
+
+        Route::get('/{userID}/userAccountCreate', [TeacherController::class, 'userAccountCreate'])->name('userAccountCreate');
+        Route::post('/userAccountStore', [TeacherController::class, 'userAccountStore'])->name('userAccountStore');
+
+        Route::get('/{userID}/userAddressCreate', [TeacherController::class, 'userAddressCreate'])->name('userAddressCreate');
+        Route::post('/{userID}/userAddressStore', [TeacherController::class, 'userAddressStore'])->name('userAddressStore');
+
+        Route::get('/{userID}/userOrganizationCreate', [TeacherController::class, 'userOrganizationCreate'])->name('userOrganizationCreate');
+        Route::post('/{userID}/userOrganizationStore', [TeacherController::class, 'userOrganizationStore'])->name('userOrganizationStore');
+
+        Route::get('/{userID}/userAddTeacherCreate', [TeacherController::class, 'userAddTeacherCreate'])->name('userAddTeacherCreate');
+        Route::post('/{userID}/userAddTeacherStore', [TeacherController::class, 'userAddTeacherStore'])->name('userAddTeacherStore');
+
+        Route::get('/{userID}/complate', [TeacherController::class, 'complate'])->name('complate');
+    });
+
+
+
 });

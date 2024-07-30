@@ -77,6 +77,16 @@
                         <span class="nav-link-text fw-bold">{{ __('Dashboards') }}</span>
                     </a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link p-3 rounded" href="{{ route('teachers.index') }}">
+                        <div class="nav-link-icon">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <span class="nav-link-text fw-bold">{{ __('Teachers') }}</span>
+                    </a>
+                </li>
+
                 @if(Auth::user() && Auth::user()->roles()->where('name', '!=', 'User')->exists())
                     <li class="nav-item">
                         <a class="nav-link p-3" data-bs-toggle="collapse" href="#authExamples" role="button"
@@ -231,6 +241,8 @@
                         </div>
                     </li>
                 @endif
+
+
 
                 {{-- <li class="nav-item">
                     <a class="nav-link p-3" data-bs-toggle="collapse" href="#pageExamples" role="button"
